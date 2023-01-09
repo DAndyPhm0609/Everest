@@ -14,20 +14,20 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseFirestore firestore;
+    FirebaseFirestore fireStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firestore = FirebaseFirestore.getInstance();
+        fireStore = FirebaseFirestore.getInstance();
 
         Map<String, Object> user = new HashMap<>();
         user.put("firstName", "Andy");
         user.put("lastName", "Pham");
 
-        firestore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        fireStore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Toast.makeText(getApplicationContext(),"success", Toast.LENGTH_SHORT).show();
