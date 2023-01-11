@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/regEmailText"
+        android:id="@+id/EmailText"
         android:layout_width="291dp"
         android:layout_height="52dp"
         android:layout_marginStart="19dp"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regEmailText" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailText" />
 
     <TextView
         android:id="@+id/regEmailId"
@@ -95,7 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/backButton"
+        app:srcCompat="@drawable/backbutton"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

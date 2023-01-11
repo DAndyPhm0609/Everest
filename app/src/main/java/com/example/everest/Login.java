@@ -3,7 +3,6 @@ package com.example.everest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +24,7 @@ public class Login extends AppCompatActivity {
 
         login = (Button) findViewById(R.id.loginId);
         back = (ImageButton) findViewById(R.id.backButton);
-        email = (EditText) findViewById(R.id.regEmailText);
+        email = (EditText) findViewById(R.id.EmailText);
         password = (EditText) findViewById(R.id.regPassText);
         emailV = (TextView) findViewById(R.id.regEmailId);
         passV = (TextView) findViewById(R.id.regPassId);

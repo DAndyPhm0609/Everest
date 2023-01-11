@@ -7,32 +7,41 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 public class SignUp extends AppCompatActivity {
+    ImageButton backButton;
     Button submit;
-    TextView name,pass;
-    EditText regName,regPass;
+    EditText email, password, name, address, number;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        submit = (Button) findViewById(R.id.submit);
+        backButton = (ImageButton) findViewById(R.id.regBack);
+        email = (EditText) findViewById(R.id.regEmailText);
+        password = (EditText) findViewById(R.id.regPassText);
+        name = (EditText) findViewById(R.id.regNameText);
+        address = (EditText) findViewById(R.id.regAddressText);
+        number = (EditText) findViewById(R.id.regPhoneText);
 
-        regName = (EditText) findViewById(R.id.regEmailText);
-        regPass = (EditText) findViewById(R.id.regPassText);
-        name = (TextView) findViewById(R.id.regEmailId);
-        pass = (TextView) findViewById(R.id.regPassId);
-
-
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SignUp.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(SignUp.this, MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 
     }
-    }
+}
