@@ -11,37 +11,39 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
-    Button login, signup;
-    EditText name,password;
-    TextView username,pass;
+    Button login, back;
+    EditText email, password;
+    TextView emailV, passV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         login = (Button) findViewById(R.id.loginId);
-        signup = (Button) findViewById(R.id.submit);
-        name = (EditText) findViewById(R.id.regNameText);
+        back = (Button) findViewById(R.id.backButton);
+        email = (EditText) findViewById(R.id.regEmailText);
         password = (EditText) findViewById(R.id.regPassText);
-        username = (TextView) findViewById(R.id.regNameId);
-        pass = (TextView) findViewById(R.id.regPassId);
+        emailV = (TextView) findViewById(R.id.regEmailId);
+        passV = (TextView) findViewById(R.id.regPassId);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(name.getText().toString().equals("admin")&&
-                        password.getText().toString().equals("admin")){
-                    Toast.makeText(getApplicationContext(),"Redirecting...", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(),"Wrong Credentials", Toast.LENGTH_SHORT).show();
+                if (email.getText().toString().equals("admin") &&
+                        password.getText().toString().equals("admin")) {
+                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        signup.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Login.this, SignUp.class);
+                Intent i = new Intent(Login.this, MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
     }

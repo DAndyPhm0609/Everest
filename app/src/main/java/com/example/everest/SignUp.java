@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class SignUp extends AppCompatActivity {
-    Button submit, back;
+    Button submit;
     TextView name,pass;
     EditText regName,regPass;
     @Override
@@ -19,20 +19,13 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         submit = (Button) findViewById(R.id.submit);
-        back = (Button) findViewById(R.id.backBtn);
-        regName = (EditText) findViewById(R.id.regNameText);
+
+        regName = (EditText) findViewById(R.id.regEmailText);
         regPass = (EditText) findViewById(R.id.regPassText);
-        name = (TextView) findViewById(R.id.regNameId);
+        name = (TextView) findViewById(R.id.regEmailId);
         pass = (TextView) findViewById(R.id.regPassId);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SignUp.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
