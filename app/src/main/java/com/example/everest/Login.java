@@ -3,15 +3,18 @@ package com.example.everest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
-    Button login, back;
+    Button login;
+    ImageButton back;
     EditText email, password;
     TextView emailV, passV;
 
@@ -21,7 +24,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         login = (Button) findViewById(R.id.loginId);
-        back = (Button) findViewById(R.id.backButton);
+        back = (ImageButton) findViewById(R.id.backButton);
         email = (EditText) findViewById(R.id.regEmailText);
         password = (EditText) findViewById(R.id.regPassText);
         emailV = (TextView) findViewById(R.id.regEmailId);
