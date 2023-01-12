@@ -20,7 +20,7 @@ public class AddBook extends AppCompatActivity {
 
     FirebaseFirestore fireStore;
 
-    Button addButton;
+    Button addButton, backButton;
     EditText nameText, authorText, priceText, desText, imageURL;
     RatingBar bookRating;
 
@@ -31,14 +31,24 @@ public class AddBook extends AppCompatActivity {
         setContentView(R.layout.activity_add_book);
 
         addButton = (Button) findViewById(R.id.button);
+        backButton = (Button) findViewById(R.id.button);
+
         nameText = (EditText) findViewById(R.id.bookName);
         authorText = (EditText) findViewById(R.id.authorName);
         priceText = (EditText) findViewById(R.id.bookPrice);
         desText = (EditText) findViewById(R.id.desText);
         imageURL = (EditText) findViewById(R.id.imageURL);
+
         bookRating = (RatingBar) findViewById(R.id.bookRating);
 
         fireStore = FirebaseFirestore.getInstance();
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +59,7 @@ public class AddBook extends AppCompatActivity {
                 book.put("price", priceText.getText().toString());
                 book.put("rating", bookRating.getRating());
                 book.put("Image URL", imageURL.getText().toString());
+                book.put("Description", desText.getText().toString());
 
                 fireStore.collection("books").add(book).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
