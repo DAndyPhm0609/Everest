@@ -21,7 +21,7 @@ public class AddBook extends AppCompatActivity {
     FirebaseFirestore fireStore;
 
     Button addButton;
-    EditText nameText, authorText, priceText;
+    EditText nameText, authorText, priceText, desText, imageURL;
     RatingBar bookRating;
 
 
@@ -34,7 +34,9 @@ public class AddBook extends AppCompatActivity {
         nameText = (EditText) findViewById(R.id.bookName);
         authorText = (EditText) findViewById(R.id.authorName);
         priceText = (EditText) findViewById(R.id.bookPrice);
-        bookRating = (RatingBar) findViewById(bookRating);
+        desText = (EditText) findViewById(R.id.desText);
+        imageURL = (EditText) findViewById(R.id.imageURL);
+        bookRating = (RatingBar) findViewById(R.id.bookRating);
 
         fireStore = FirebaseFirestore.getInstance();
 
@@ -45,7 +47,8 @@ public class AddBook extends AppCompatActivity {
                 book.put("name", nameText.getText().toString());
                 book.put("author", authorText.getText().toString());
                 book.put("price", priceText.getText().toString());
-                book.put("rating", )
+                book.put("rating", bookRating.getRating());
+                book.put("Image URL", imageURL.getText().toString());
 
                 fireStore.collection("books").add(book).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

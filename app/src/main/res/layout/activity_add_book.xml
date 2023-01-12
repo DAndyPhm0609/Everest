@@ -37,11 +37,27 @@
             android:inputType="textPersonName"
             android:text="prices" />
 
+        <EditText
+            android:id="@+id/imageURL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="image URL" />
+
         <RatingBar
             android:id="@+id/bookRating"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:stepSize="0.5"/>
+
+        <EditText
+            android:id="@+id/desText"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
 
         <Button
             android:id="@+id/button"
