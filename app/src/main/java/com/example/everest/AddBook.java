@@ -45,7 +45,7 @@ public class AddBook extends AppCompatActivity {
                 book.put("name", nameText.getText().toString());
                 book.put("author", authorText.getText().toString());
                 book.put("price", priceText.getText().toString());
-                //book.put("rating", )
+                book.put("rating", bookRating.getRating());
 
                 fireStore.collection("books").add(book).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
