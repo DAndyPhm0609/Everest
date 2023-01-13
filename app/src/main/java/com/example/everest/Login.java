@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Login.this, MainPage.class);
+                Intent i = new Intent(Login.this, HomePage.class);
                 startActivity(i);
 
             }
@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        startActivity(new Intent(Login.this, MainPage.class));
+                        startActivity(new Intent(Login.this, HomePage.class));
                     } else {
                         Toast.makeText(Login.this, "Registration Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
