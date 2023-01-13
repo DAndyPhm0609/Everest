@@ -67,10 +67,11 @@
         android:id="@+id/imageButton2"
         android:layout_width="36dp"
         android:layout_height="33dp"
+        android:layout_marginTop="27dp"
         android:background="@color/white"
-        app:srcCompat="@drawable/customer_info"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="27dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/customer_info" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
