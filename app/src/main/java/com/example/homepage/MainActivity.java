@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.everest.R;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
