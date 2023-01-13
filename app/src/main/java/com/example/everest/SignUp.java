@@ -13,15 +13,23 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
     ImageButton backButton;
     Button submit;
     EditText email, password, name, address, number;
     FirebaseAuth mAuth;
+    FirebaseFirestore fireStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,7 @@ public class SignUp extends AppCompatActivity {
         submit = (Button) findViewById(R.id.submit);
 
         mAuth = FirebaseAuth.getInstance();
+        fireStore = FirebaseFirestore.getInstance();
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,11 +91,25 @@ public class SignUp extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(SignUp.this, "User registered", Toast.LENGTH_SHORT).show();
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("name", Name);
+                        user.put("password", Password);
+                        user.put("address", Address);
+                        user.put("email", Email);
+                        user.put("phone", Phone);
+
+                        fireStore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
                         Toast.makeText(SignUp.this, "Registration Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
+
         }
     }
 }

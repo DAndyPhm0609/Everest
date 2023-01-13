@@ -42,16 +42,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Map<String, Object> user = new HashMap<>();
+//        Map<String, Object> user = new HashMap<>();
 //        user.put("firstName", "Andy");
 //        user.put("lastName", "Pham");
-
-        fireStore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
-            }
-        });
+//
+//        fireStore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//            @Override
+//            public void onSuccess(DocumentReference documentReference) {
+//                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
