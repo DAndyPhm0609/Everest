@@ -1,3 +1,7 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">HomePage</string>
+=======
+    <string name="app_name">Everest</string>
+>>>>>>> dc08396e81c49e120eebede8169379e35e710260
 </resources>
