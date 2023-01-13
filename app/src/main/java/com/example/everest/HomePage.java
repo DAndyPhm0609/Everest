@@ -23,12 +23,15 @@ public class HomePage extends AppCompatActivity {
         createBookList();
         bookAdapter = new BookDisplayAdapter(this,list);
         recyclerBook.setAdapter(bookAdapter);
-        recyclerBook.setLayoutManager(new LinearLayoutManager(this));
+        recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
     }
 
     private void createBookList() {
         list.add(new BookData("Thor", R.drawable.hp_cover));
+        list.add(new BookData("IronMan", R.drawable.hp_cover));
+        list.add(new BookData("IronMan", R.drawable.hp_cover));
+        list.add(new BookData("IronMan", R.drawable.hp_cover));
         list.add(new BookData("IronMan", R.drawable.hp_cover));
     }
 }

@@ -19,8 +19,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="393dp"
-        android:layout_height="239dp"
+        android:layout_width="416dp"
+        android:layout_height="200dp"
         android:layout_marginTop="31dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
@@ -30,11 +30,11 @@
         android:layout_width="343dp"
         android:layout_height="54dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/outlline_recycler_view"
-        android:queryHint="Titles, authors"
         android:iconifiedByDefault="false"
+        android:queryHint="Titles, authors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
