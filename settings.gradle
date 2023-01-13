@@ -12,5 +12,9 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+<<<<<<< HEAD
+rootProject.name = "HomePage"
+=======
 rootProject.name = "Everest"
+>>>>>>> dc08396e81c49e120eebede8169379e35e710260
 include ':app'
