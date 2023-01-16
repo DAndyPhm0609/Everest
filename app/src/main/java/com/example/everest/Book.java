@@ -3,20 +3,22 @@ package com.example.everest;
 public class Book {
     String name;
     String author;
-    int price;
-    String rating;
+    String price;
+    Double rating;
     String category;
-    String state;
-    private int bookCover;
+    String imageURL;
 
-    public Book(String name, String author, int price, String rating, String category, String state, int bookCover){
+    public Book(String name, String author, String price, Double rating, String category, String state, String imageURL, int bookCover){
         this.name = name;
         this.author = author;
         this.price = price;
         this.rating = rating;
         this.category = category;
-        this.state = state;
-        this.bookCover = bookCover;
+        this.imageURL = imageURL;
+    }
+
+    public Book(){
+
     }
 
     public String getName() {
@@ -35,19 +37,19 @@ public class Book {
         this.author = author;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public String getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
@@ -59,19 +61,12 @@ public class Book {
         this.category = category;
     }
 
-    public String getState() {
-        return state;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
-    public int getBookCover() {
-        return bookCover;
-    }
-
-    public void setBookCover(int bookCover) {
-        this.bookCover = bookCover;
-    }
 }

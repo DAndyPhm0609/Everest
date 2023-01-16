@@ -1,20 +1,24 @@
 package com.example.everest;
 
 public class BookData {
-    private String bookName;
+    private String name;
     private int bookCover;
 
-    public BookData(String bookName, int bookCover) {
-        this.bookName = bookName;
+    public BookData(String name, int bookCover) {
+        this.name = name;
         this.bookCover = bookCover;
     }
 
-    public String getBookName() {
-        return bookName;
+    public BookData(){
+
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public String getBookName() {
+        return name;
+    }
+
+    public void setBookName(String name) {
+        this.name = name;
     }
 
     public int getBookCover() {

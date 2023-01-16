@@ -50,7 +50,7 @@ public class AddBook extends AppCompatActivity {
                 fireStore.collection("books").add(book).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(getApplicationContext(),"success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"book add success", Toast.LENGTH_SHORT).show();
                     }
                 });
 
