@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.widget.ImageButton;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,12 +37,8 @@ public class HomePage extends AppCompatActivity {
     Button addButton;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
     private BookDisplayAdapter bookAdapter ;
-    private ImageButton cart;
+    private ImageButton showCart;
     private ImageButton info;
-
-    private ArrayList<Book> displayList;
-    private RecyclerView recyclerList;
-    private ListAdapter listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,21 +62,13 @@ public class HomePage extends AppCompatActivity {
         bookAdapter = new BookDisplayAdapter(this, list);
         recyclerBook.setAdapter(bookAdapter);
         recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        recyclerList = findViewById(R.id.recycler_view2);
-        displayList = new ArrayList<>();
-        createList();
-        recyclerList.setAdapter(listAdapter);
-        recyclerList.setLayoutManager(new LinearLayoutManager(this));
-
-        cart = (ImageButton) findViewById(R.id.shoppingcart);
-        cart.setOnClickListener(new View.OnClickListener() {
+        
+        showCart= (ImageButton) findViewById(R.id.shoppingCart);
+        showCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent i = new Intent(HomePage.this,);
-                Toast.makeText(HomePage.this, "shopping cart", Toast.LENGTH_SHORT).show();
-            }
-        });
+                Intent i = new Intent(HomePage.this, ShowCart.class);
+                startActivity(i);
 
         info = (ImageButton) findViewById(R.id.cusInfo);
         info.setOnClickListener(new View.OnClickListener() {
@@ -122,4 +111,5 @@ public class HomePage extends AppCompatActivity {
         displayList.add(new Book("Harry Porter", "J.K.Rowling", 30,"5.0", R.drawable.hp_cover, R.drawable.star_icon));
         displayList.add(new Book("Harry Porter", "J.K.Rowling", 30,"5.0", R.drawable.hp_cover, R.drawable.star_icon));
     }
+
 }
