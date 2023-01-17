@@ -14,20 +14,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.ViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<BookData> list;
-
-    public class ViewHolder1 extends RecyclerView.ViewHolder {
-        private ImageView bookCover;
-        private TextView name;
-
-        public ViewHolder1(@NonNull View itemView) {
-            super(itemView);
-            bookCover= itemView.findViewById(R.id.bookCover);
-            name = itemView.findViewById(R.id.bookName);
-        }
-    }
+    private ArrayList<Book> list;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView bookCover, starIcon;
@@ -43,27 +32,28 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
         }
     }
 
-    public
-
-    public BookDisplayAdapter(Context context, ArrayList<BookData> list) {
+    public ListAdapter(Context context, ArrayList<Book> list) {
         this.context = context;
         this.list = list;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View heroView = inflater.inflate(R.layout.item_column, parent, false);
+        View heroView = inflater.inflate(R.layout.item_list, parent, false);
         ViewHolder viewHolder = new ViewHolder(heroView);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BookData book = list.get(position);
+        Book book = list.get(position);
         Glide.with(context).load(book.getBookCover()).into(holder.bookCover);
-        holder.name.setText(book.getBookName());
+        holder.name.setText(book.getName());
+        holder.author.setText(book.getAuthor());
+        Glide.with(context).load(book.getRating()).into(holder.starIcon);
+        holder.rating.setText(book.getRating());
     }
 
     @Override

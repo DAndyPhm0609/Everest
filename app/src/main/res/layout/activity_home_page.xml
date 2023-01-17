@@ -48,12 +48,13 @@
         android:layout_marginTop="24dp"
         android:text="For You"
         android:textSize="20dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/shoppingcart"
         android:layout_width="45dp"
         android:layout_height="36dp"
         android:layout_marginTop="27dp"
@@ -64,14 +65,59 @@
         app:srcCompat="@drawable/ic_action_name" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/cusInfo"
         android:layout_width="36dp"
         android:layout_height="33dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="26dp"
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/customer_info" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/rbtn_state_check"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+
+            android:button="@null"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Newest" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:button="@null"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Popular" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:button="@null"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Wishlist" />
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
