@@ -98,7 +98,6 @@ public class SignUp extends AppCompatActivity {
                         user.put("email", Email);
                         user.put("phone", Phone);
 
-
                         fireStore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {

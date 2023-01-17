@@ -2,9 +2,9 @@ package com.example.everest;
 
 public class BookData {
     private String name;
-    private int bookCover;
+    private String bookCover;
 
-    public BookData(String name, int bookCover) {
+    public BookData(String name, String bookCover) {
         this.name = name;
         this.bookCover = bookCover;
     }
@@ -21,11 +21,11 @@ public class BookData {
         this.name = name;
     }
 
-    public int getBookCover() {
+    public String getBookCover() {
         return bookCover;
     }
 
-    public void setBookCover(int bookCover) {
+    public void setBookCover(String bookCover) {
         this.bookCover = bookCover;
     }
 }
