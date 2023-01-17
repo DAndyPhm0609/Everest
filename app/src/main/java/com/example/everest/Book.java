@@ -6,17 +6,16 @@ public class Book {
     int price;
     String rating;
     String category;
-    String state;
     private int bookCover;
+    private int starIcon;
 
-    public Book(String name, String author, int price, String rating, String category, String state, int bookCover){
+    public Book(String name, String author, int price, String rating, int bookCover, int starIcon){
         this.name = name;
         this.author = author;
         this.price = price;
         this.rating = rating;
-        this.category = category;
-        this.state = state;
         this.bookCover = bookCover;
+        this.starIcon = starIcon;
     }
 
     public String getName() {
@@ -51,27 +50,19 @@ public class Book {
         this.rating = rating;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public int getBookCover() {
         return bookCover;
     }
 
     public void setBookCover(int bookCover) {
         this.bookCover = bookCover;
+    }
+
+    public int getStarIcon() {
+        return starIcon;
+    }
+
+    public void setStarIcon(int starIcon) {
+        this.starIcon = starIcon;
     }
 }
