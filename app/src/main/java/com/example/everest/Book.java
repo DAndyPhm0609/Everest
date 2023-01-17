@@ -1,22 +1,19 @@
 package com.example.everest;
 
 public class Book {
-    String name;
-    String author;
-    int price;
-    String rating;
-    String category;
-    private int bookCover;
-    private int starIcon;
+    String name, author, des, url, price;
+    Double rating;
 
-    public Book(String name, String author, int price, String rating, int bookCover, int starIcon){
+    public Book(String name, String author, String price, Double rating, String des, String url){
         this.name = name;
         this.author = author;
         this.price = price;
         this.rating = rating;
-        this.bookCover = bookCover;
-        this.starIcon = starIcon;
+        this.des = des;
+        this.url = url;
     }
+
+    public Book(){}
 
     public String getName() {
         return name;
@@ -34,36 +31,36 @@ public class Book {
         this.author = author;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public String getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
-    public int getBookCover() {
-        return bookCover;
+    public String getDes() {
+        return des;
     }
 
-    public void setBookCover(int bookCover) {
-        this.bookCover = bookCover;
+    public void setDes(String des) {
+        this.des = des;
     }
 
-    public int getStarIcon() {
-        return starIcon;
+    public String getUrl() {
+        return url;
     }
 
-    public void setStarIcon(int starIcon) {
-        this.starIcon = starIcon;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
 

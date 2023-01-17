@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.everest.R;
+import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
@@ -24,6 +27,7 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
 
         public ViewHolder1(@NonNull View itemView) {
             super(itemView);
+
             bookCover= itemView.findViewById(R.id.bookCover);
             name = itemView.findViewById(R.id.bookName);
         }
@@ -62,7 +66,8 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BookData book = list.get(position);
-        Glide.with(context).load(book.getBookCover()).into(holder.bookCover);
+        Picasso.get().load(book.getBookCover()).into(holder.bookCover);
+//        Glide.with(context).load(book.getBookCover()).into(holder.bookCover);
         holder.name.setText(book.getBookName());
     }
 

@@ -39,9 +39,25 @@
 
         <RatingBar
             android:id="@+id/bookRating"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="72dp"
-            android:stepSize="0.5"/>
+            android:stepSize="0.5" />
+
+        <EditText
+            android:id="@+id/imageURL"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="url" />
+
+        <EditText
+            android:id="@+id/bookDes"
+            android:layout_width="match_parent"
+            android:layout_height="111dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="des" />
 
         <Button
             android:id="@+id/button"
