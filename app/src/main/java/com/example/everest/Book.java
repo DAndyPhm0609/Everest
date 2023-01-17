@@ -4,7 +4,6 @@ public class Book {
     String name, author, des, url, price;
     Double rating;
 
-
     public Book(String name, String author, String price, Double rating, String des, String url){
         this.name = name;
         this.author = author;
@@ -14,9 +13,7 @@ public class Book {
         this.url = url;
     }
 
-    public Book(){
-
-    }
+    public Book(){}
 
     public String getName() {
         return name;
@@ -65,5 +62,5 @@ public class Book {
     public void setUrl(String url) {
         this.url = url;
     }
-
 }
+
