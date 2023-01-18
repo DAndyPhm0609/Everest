@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="6dp"
-            app:srcCompat="@drawable/_94822444_445051114218798_343583688474444677_n" />
+            app:srcCompat="@drawable/hp_cover" />
 
         <LinearLayout
             android:layout_width="80dp"

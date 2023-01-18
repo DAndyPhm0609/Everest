@@ -25,7 +25,7 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            bookCover= itemView.findViewById(R.id.bookCover);
+            bookCover = itemView.findViewById(R.id.bookCover);
             name = itemView.findViewById(R.id.bookName);
         }
     }
@@ -40,8 +40,7 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View book = inflater.inflate(R.layout.item_column, parent, false);
-        ViewHolder viewHolder = new ViewHolder(book);
-        return viewHolder;
+        return new ViewHolder(book);
     }
 
     @Override

@@ -48,9 +48,7 @@ public class HomePage extends AppCompatActivity {
         recyclerBook = findViewById(R.id.recyclerView);
 
 //        addButton = (Button) findViewById(R.id.addButton);
-//
-//        list = new ArrayList<>();
-//        createBookList();
+        createBookList();
 //
 //        addButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -104,6 +102,4 @@ public class HomePage extends AppCompatActivity {
                 });
     }
 
-    private void addBookToCollection() {
-    }
 }
