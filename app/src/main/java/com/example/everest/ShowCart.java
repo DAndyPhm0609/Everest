@@ -45,14 +45,14 @@ public class ShowCart extends AppCompatActivity {
         recyclerView = findViewById(R.id.cartList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(ShowCart.this));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
+//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
+//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
+//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
+//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
+//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
+//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
+//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
+//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
 
         adapter = new CartListAdapter(cartList, getApplication(),listener);
         recyclerView.setAdapter(adapter);

@@ -105,7 +105,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
             if (!itemStateArray.get(i)) {
                 num++;
             } else {
-                total += list.get(i).price;
+//                total += list.get(i).price;
             }
         }
         if (num == 0) {

@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.example.everest.R;
 import com.squareup.picasso.Picasso;
 
 
@@ -21,33 +19,16 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
     private Context context;
     private ArrayList<BookData> list;
 
-    public class ViewHolder1 extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView bookCover;
         private TextView name;
 
-        public ViewHolder1(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             bookCover= itemView.findViewById(R.id.bookCover);
             name = itemView.findViewById(R.id.bookName);
         }
     }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView bookCover, starIcon;
-        private TextView name, author, rating;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            bookCover = itemView.findViewById(R.id.harry);
-            name = itemView.findViewById(R.id.bookName1);
-            starIcon = itemView.findViewById(R.id.star);
-            author = itemView.findViewById(R.id.author);
-            rating = itemView.findViewById(R.id.rating);
-        }
-    }
-
-    public
 
     public BookDisplayAdapter(Context context, ArrayList<BookData> list) {
         this.context = context;
@@ -56,10 +37,10 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View heroView = inflater.inflate(R.layout.item_column, parent, false);
-        ViewHolder viewHolder = new ViewHolder(heroView);
+        View book = inflater.inflate(R.layout.item_column, parent, false);
+        ViewHolder viewHolder = new ViewHolder(book);
         return viewHolder;
     }
 
@@ -67,7 +48,6 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BookData book = list.get(position);
         Picasso.get().load(book.getBookCover()).into(holder.bookCover);
-//        Glide.with(context).load(book.getBookCover()).into(holder.bookCover);
         holder.name.setText(book.getBookName());
     }
 
