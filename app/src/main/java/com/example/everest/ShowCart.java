@@ -78,5 +78,8 @@ public class ShowCart extends AppCompatActivity {
                 setAmount(0);
             }
         });
+        checkout.setOnClickListener(view -> {
+
+        });
     }
 }
