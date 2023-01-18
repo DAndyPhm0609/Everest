@@ -96,6 +96,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
     @SuppressLint("NotifyDataSetChanged")
     public void checkCheckBox(int position, boolean value) {
         int num = 0;
+        int cost = 0;
+
         int total = 0;
         if (value)
             itemStateArray.put(position, true);
@@ -105,7 +107,12 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
             if (!itemStateArray.get(i)) {
                 num++;
             } else {
-//                total += list.get(i).price;
+                try {
+                    cost = Integer.parseInt(list.get(i).price);
+                } catch(NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+                total += cost;
             }
         }
         if (num == 0) {
