@@ -32,7 +32,7 @@ public class AddBook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        addButton = (Button) findViewById(R.id.button);
+        addButton = (Button) findViewById(R.id.addButton);
 
         nameText = (EditText) findViewById(R.id.bookName);
         authorText = (EditText) findViewById(R.id.authorName);
