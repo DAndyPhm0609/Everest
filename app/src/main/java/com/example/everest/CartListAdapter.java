@@ -1,5 +1,10 @@
 package com.example.everest;
 
+import static com.example.everest.ShowCart.cartList;
+import static com.example.everest.ShowCart.setAmount;
+import static com.example.everest.ShowCart.setDeselectAll;
+import static com.example.everest.ShowCart.setSelectAll;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.SparseBooleanArray;
@@ -90,10 +95,26 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
 
     @SuppressLint("NotifyDataSetChanged")
     public void checkCheckBox(int position, boolean value) {
+        int num = 0;
+        int total = 0;
         if (value)
             itemStateArray.put(position, true);
         else
             itemStateArray.delete(position);
+        for (int i = 0; i < cartList.size(); i++) {
+            if (!itemStateArray.get(i)) {
+                num++;
+            } else {
+                total += list.get(i).price;
+            }
+        }
+        if (num == 0) {
+            setSelectAll();
+            setAmount(0);
+        } else {
+            setDeselectAll();
+        }
+        setAmount(total);
         notifyDataSetChanged();
     }
 

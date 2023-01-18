@@ -17,8 +17,8 @@ public class ShowCart extends AppCompatActivity {
     public static List<Book> cartList = new ArrayList<>();
     CartListAdapter adapter;
     RecyclerView recyclerView;
-    CheckBox selectAll;
-    TextView total, amount;
+    static CheckBox selectAll;
+    static TextView amount;
     Button checkout;
     CartListAdapter.ClickListener listener;
     @Override
@@ -26,8 +26,20 @@ public class ShowCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_cart);
         selectAll = findViewById(R.id.selectAll);
+        amount = findViewById(R.id.amount);
         populateRecyclerView();
         onClickEvent();
+    }
+    public static void setAmount(int total) {
+        amount.setText("$" + total);
+    }
+    public static void setSelectAll() {
+        selectAll.setChecked(true);
+        selectAll.setText(R.string.deselect_all);
+    }
+    public static void setDeselectAll() {
+        selectAll.setChecked(false);
+        selectAll.setText(R.string.select_all);
     }
     private void populateRecyclerView() {
         recyclerView = findViewById(R.id.cartList);
@@ -63,6 +75,7 @@ public class ShowCart extends AppCompatActivity {
                 adapter.removeSelection();
                 //After checking all items change button text
                 selectAll.setText(getResources().getString(R.string.select_all));
+                setAmount(0);
             }
         });
     }
