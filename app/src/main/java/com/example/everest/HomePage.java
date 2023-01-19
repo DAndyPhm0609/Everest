@@ -7,22 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.media.Image;
 import android.widget.ImageButton;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.everest.databinding.ActivityHomePageBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
@@ -33,45 +26,34 @@ import java.util.List;
 
 
 public class HomePage extends AppCompatActivity {
-    private ArrayList<BookData> list = new ArrayList<>();
-    private RecyclerView recyclerBook;
-    private static final String TAG = "HomePage";
-    ActivityHomePageBinding binding;
+
+    public RecyclerView recyclerBook;
+
+    public ArrayList<BookData> recyclerList = new ArrayList<>();
+    public ArrayList<BookCardDetail> bookCardDetailArrayList = new ArrayList<>();
 
     Button addButton;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
-    private BookDisplayAdapter bookAdapter;
-    private ImageButton showCart;
-    private ImageButton info;
+    public BookDisplayAdapter bookAdapter;
+    public ImageButton showCart;
+    public ImageButton info;
+
+    ListViewAdapter listAdapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityHomePageBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_home_page);
+
+        createNewList();
+        listAdapter = new ListViewAdapter(bookCardDetailArrayList);
+        listView = findViewById(R.id.listView);
+        listView.setAdapter(listAdapter);
+
+        createBookList();
         recyclerBook = findViewById(R.id.recyclerView);
-
-        String[] name;
-        String[] author;
-        String[] price;
-        ImageButton[] wishList;
-        Image[] star;
-        Image[] bookCover;
-
-//        addButton = (Button) findViewById(R.id.addButton);
-//
-//        list = new ArrayList<>();
-//        createBookList();
-//
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(HomePage.this, AddBook.class);
-//                startActivity(i);
-//            }
-//        });
-
-        bookAdapter = new BookDisplayAdapter(this, list);
+        bookAdapter = new BookDisplayAdapter(this, recyclerList);
         recyclerBook.setAdapter(bookAdapter);
         recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -92,6 +74,14 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText(HomePage.this, "user info", Toast.LENGTH_SHORT).show();
             }
         });
+        //        addButton = (Button) findViewById(R.id.addButton);
+//        addButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(HomePage.this, AddBook.class);
+//                startActivity(i);
+//            }
+//        });
     }
 
 
@@ -109,12 +99,39 @@ public class HomePage extends AppCompatActivity {
                             String name = book.getName();
                             String imgURL = book.getUrl();
 
-                            list.add(new BookData(name, imgURL));
+                            recyclerList.add(new BookData(name, imgURL));
                         }
                     }
                 });
     }
 
-    private void addBookToCollection() {
+    public void createNewList() {
+        fireStore.collection("books")
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+
+                        for (DocumentSnapshot documentSnapshot : snapshotList) {
+                            BookCardDetail book = documentSnapshot.toObject(BookCardDetail.class);
+
+                            String name = book.getName();
+                            String author = book.getAuthor();
+                            String price = book.getPrice();
+                            Double rating = book.getRating();
+                            String imgURL = book.getUrl();
+                            String star = "https://uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.png";
+                            String wishList = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-rR5-UUarzgaOnGCMMC8OV06K2zwdd_ZJcX60BP0&s";
+
+                            System.out.println(name);
+                            System.out.println(author);
+                            System.out.println(price);
+                            System.out.println(rating);
+                            System.out.println(imgURL);
+
+                            bookCardDetailArrayList.add(new BookCardDetail(name, author, price, rating, star, imgURL, wishList));
+                        }
+                    }
+                });
     }
 }
