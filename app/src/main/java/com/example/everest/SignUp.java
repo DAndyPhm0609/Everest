@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
-    ImageButton backButton;
     Button submit;
     EditText email, password, name, address, number;
     FirebaseAuth mAuth;
@@ -35,8 +35,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
-        backButton = (ImageButton) findViewById(R.id.regBack);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         email = (EditText) findViewById(R.id.regEmailText);
         password = (EditText) findViewById(R.id.regPassText);
         name = (EditText) findViewById(R.id.regNameText);
@@ -47,14 +46,6 @@ public class SignUp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fireStore = FirebaseFirestore.getInstance();
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SignUp.this, MainPage.class);
-                startActivity(i);
-                finish();
-            }
-        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +53,6 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
-
     private void createUser() {
         String Email = email.getText().toString();
         String Password = password.getText().toString();
@@ -110,6 +100,20 @@ public class SignUp extends AppCompatActivity {
                 }
             });
 
+        }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                Intent intent = new Intent(SignUp.this, MainPage.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +27,6 @@ import java.util.List;
 
 public class Login extends AppCompatActivity {
     Button login;
-    ImageButton back;
     EditText email, password;
     TextView emailV, passV;
     FirebaseAuth mAuth;
@@ -37,9 +37,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         login = (Button) findViewById(R.id.loginId);
-        back = (ImageButton) findViewById(R.id.backButton);
         email = (EditText) findViewById(R.id.EmailText);
         password = (EditText) findViewById(R.id.regPassText);
         emailV = (TextView) findViewById(R.id.regEmailId);
@@ -51,14 +50,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loginUser();
-            }
-        });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Login.this, HomePage.class);
-                startActivity(i);
-
             }
         });
     }
@@ -104,6 +95,20 @@ public class Login extends AppCompatActivity {
                     }
                 }
             });
+        }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                Intent intent = new Intent(Login.this, MainPage.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

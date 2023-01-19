@@ -4,4 +4,7 @@
     <string name="deselect_all">Deselect All</string>
     <string name="successDeli">CONGRATULATION!</string>
     <string name="deliMess">We are preparing for your order.</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="everest">EVEREST</string>
 </resources>

@@ -5,169 +5,114 @@
     android:id="@+id/backButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp">
+    tools:context=".SignUp"
+    android:background="@drawable/background">
 
 
-    <TextView
-        android:id="@+id/regEmailId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="9dp"
-        android:text="Email"
-        app:layout_constraintBottom_toTopOf="@+id/regEmailText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/regPassId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="4dp"
-        android:text="Password"
-        app:layout_constraintBottom_toTopOf="@+id/regPassText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regEmailText" />
+        <TextView
+            android:id="@+id/regNameId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="@color/white" />
 
-    <EditText
-        android:id="@+id/regPassText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/regNameId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPassId"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <EditText
+            android:id="@+id/regNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="99dp"
-        android:layout_height="48dp"
+        <TextView
+            android:id="@+id/regPassId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="@android:color/white"/>
 
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="156dp"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPhoneText" />
+        <EditText
+            android:id="@+id/regPassText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:textColor="@android:color/white"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:backgroundTint="@color/white" />
 
-    <TextView
-        android:id="@+id/regNameId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="18dp"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/regNameText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPassText" />
+        <TextView
+            android:id="@+id/regAddressId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/regPhoneId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="18dp"
-        android:text="Phone number"
-        app:layout_constraintBottom_toTopOf="@+id/regPhoneText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regAddressText" />
+        <EditText
+            android:id="@+id/regAddressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColor="@color/white"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:backgroundTint="@color/white" />
 
-    <TextView
-        android:id="@+id/regAddressId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="18dp"
-        android:text="Address"
-        app:layout_constraintBottom_toTopOf="@+id/regAddressText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regNameText" />
+        <TextView
+            android:id="@+id/regPhoneId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone number"
+            android:textColor="@color/white" />
 
-    <EditText
-        android:id="@+id/regNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/regAddressId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regNameId"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <EditText
+            android:id="@+id/regPhoneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:textColor="@color/white"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:backgroundTint="@color/white"/>
 
-    <EditText
-        android:id="@+id/regAddressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/regPhoneId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regAddressId"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <TextView
+            android:id="@+id/regEmailId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@color/white" />
 
-    <EditText
-        android:id="@+id/regPhoneText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:inputType="phone"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/submit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPhoneId"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <EditText
+            android:id="@+id/regEmailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"/>
 
-    <EditText
-        android:id="@+id/regEmailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/regPassId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regEmailId"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="Submit" />
 
-    <ImageButton
-        android:id="@+id/regBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="356dp"
-        android:background="#FFFFFF"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/backbutton"
-        tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
