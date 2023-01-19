@@ -43,13 +43,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddBook"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".SignUp"
             android:exported="false">
             <meta-data

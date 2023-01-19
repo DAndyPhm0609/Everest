@@ -26,12 +26,10 @@ class ListViewAdapter extends BaseAdapter {
     private int layout;
     ArrayList<BookCardDetail> bookList;
 
-    public ListViewAdapter(Context context, int layout, ArrayList<BookCardDetail> bookList){
+    public ListViewAdapter(Context context, ArrayList<BookCardDetail> bookList){
         this.context = context;
-        this.layout = layout;
         this.bookList = bookList;
     }
-
 
     ListViewAdapter(ArrayList<BookCardDetail> bookList) {
         this.bookList = bookList;
@@ -51,9 +49,6 @@ class ListViewAdapter extends BaseAdapter {
     public long getItemId(int i) {
         return 0;
     }
-
-
-
 
     @NonNull
     @Override

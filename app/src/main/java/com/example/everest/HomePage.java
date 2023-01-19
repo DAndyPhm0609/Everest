@@ -27,21 +27,16 @@ import java.util.List;
 
 public class HomePage extends AppCompatActivity {
 
-    private ArrayList<BookData> list;
+    public static ArrayList<BookData> recyclerList;
+    public static ArrayList<BookCardDetail> bookCardDetailArrayList = new ArrayList<>();
     public static List<Book> cartList = new ArrayList<>();
     private RecyclerView recyclerBook;
-    private static final String TAG = "HomePage";
     private TextView welcomeView;
-
     Button addButton;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
     private BookDisplayAdapter bookAdapter;
     private ImageButton showCart;
     private ImageButton info;
-//    TextView welcomeView;
-
-    public ArrayList<BookData> recyclerList = new ArrayList<>();
-    public ArrayList<BookCardDetail> bookCardDetailArrayList = new ArrayList<>();
 
     ListViewAdapter listAdapter;
     ListView listView;
@@ -51,27 +46,15 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-
-        createNewList();
-        listAdapter = new ListViewAdapter(bookCardDetailArrayList);
-        listView = findViewById(R.id.listView);
-        listView.setAdapter(listAdapter);
-
-        createBookList();
-        recyclerBook = findViewById(R.id.recyclerView);
-        bookAdapter = new BookDisplayAdapter(this, recyclerList);
-
-
         welcomeView = (TextView) findViewById(R.id.welcomeText);
-        String userName;
-
         Intent i = getIntent();
-        userName = (String) i.getStringExtra("name");
-        System.out.println("From homepage" + userName);
+        String userName = (String) i.getStringExtra("name");
         welcomeView.setText(String.format("Hello %s", userName));
 
-        recyclerBook.setAdapter(bookAdapter);
-        recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        System.out.println("Before create book list");
+        createRecyclerView();
+        System.out.println("After create book list");
+        // createListView();
 
         showCart = (ImageButton) findViewById(R.id.shoppingCart);
         showCart.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +83,23 @@ public class HomePage extends AppCompatActivity {
 //        });
     }
 
+    public void createListView(){
+        createNewList();
+        listAdapter = new ListViewAdapter(getApplicationContext(),bookCardDetailArrayList);
+        listView = findViewById(R.id.listView);
+        listView.setAdapter(listAdapter);
+    }
+
+    public void createRecyclerView(){
+        createBookList();
+        recyclerBook = findViewById(R.id.recyclerView);
+        bookAdapter = new BookDisplayAdapter(this, recyclerList);
+        recyclerBook.setAdapter(bookAdapter);
+        recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+    }
 
     public void createBookList() {
+        recyclerList = new ArrayList<>();
         fireStore.collection("books")
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -114,10 +112,17 @@ public class HomePage extends AppCompatActivity {
                             String name = book.getName();
                             String imgURL = book.getUrl();
 
+                            System.out.println(name);
+                            System.out.println(imgURL);
+
                             recyclerList.add(new BookData(name, imgURL));
+                            System.out.println("add success");
                         }
                     }
                 });
+//        recyclerList.add(new BookData("Harry Poppy", R.drawable.hp_cover));
+//        recyclerList.add(new BookData("Harry Poppy", R.drawable.hp_cover));
+//        recyclerList.add(new BookData("Harry Poppy", R.drawable.hp_cover));
     }
 
     public void createNewList() {
@@ -148,5 +153,7 @@ public class HomePage extends AppCompatActivity {
                         }
                     }
                 });
+//        bookCardDetailArrayList.add(new BookCardDetail("name", "author", "price", 4.0, "https://uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.png", imgURL, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-rR5-UUarzgaOnGCMMC8OV06K2zwdd_ZJcX60BP0&s"));
+
     }
 }

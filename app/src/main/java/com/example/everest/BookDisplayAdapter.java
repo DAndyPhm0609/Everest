@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 
@@ -48,6 +49,7 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BookData book = list.get(position);
         Picasso.get().load(book.getBookCover()).into(holder.bookCover);
+//        Glide.with(context).load(book.getBookCover()).into(holder.bookCover);
         holder.name.setText(book.getBookName());
     }
 
