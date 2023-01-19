@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartViewHolder> {
-    List<Book> list;
+    static List<Book> list;
     static SparseBooleanArray itemStateArray= new SparseBooleanArray();
     Context context;
     ClickListener listener;
@@ -93,16 +93,19 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
         notifyDataSetChanged();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     public void checkCheckBox(int position, boolean value) {
-        int num = 0;
-        int cost = 0;
-
-        int total = 0;
         if (value)
             itemStateArray.put(position, true);
         else
             itemStateArray.delete(position);
+        calcTotal();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void calcTotal() {
+        int num = 0;
+        int cost = 0;
+        int total = 0;
         for (int i = 0; i < cartList.size(); i++) {
             if (!itemStateArray.get(i)) {
                 num++;
@@ -124,7 +127,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
         setAmount(total);
         notifyDataSetChanged();
     }
-
     static class cartViewHolder extends RecyclerView.ViewHolder{
         RelativeLayout cartCard;
         CheckBox buyCheckBox;

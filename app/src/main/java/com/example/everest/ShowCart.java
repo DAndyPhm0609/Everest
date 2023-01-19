@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -25,8 +27,10 @@ public class ShowCart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_cart);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         selectAll = findViewById(R.id.selectAll);
         amount = findViewById(R.id.amount);
+        checkout = findViewById(R.id.checkout);
         populateRecyclerView();
         onClickEvent();
     }
@@ -48,17 +52,11 @@ public class ShowCart extends AppCompatActivity {
         cartList.add(new Book("Harry Potter", "J. K. Rowling", "30", 5.0, "fantasy", "US"));
         cartList.add(new Book("Harry Potter", "J. K. Rowling", "30", 5.0, "fantasy", "US"));
         cartList.add(new Book("Harry Potter", "J. K. Rowling", "30", 5.0, "fantasy", "US"));
-//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-//        cartList.add(new Book("Harry Potter", "J. K. Rowling", 30, "5.0", "fantasy", "US", 1));
-
         adapter = new CartListAdapter(cartList, getApplication(),listener);
         recyclerView.setAdapter(adapter);
         listener = new CartListAdapter.ClickListener() {
-
         };
+        adapter.calcTotal();
     }
 
     private void onClickEvent() {
@@ -79,7 +77,29 @@ public class ShowCart extends AppCompatActivity {
             }
         });
         checkout.setOnClickListener(view -> {
-
+            if (!amount.getText().toString().equals("0")){
+                Intent intent = new Intent(ShowCart.this, Delivery.class);
+                intent.putExtra("total", amount.getText().toString());
+                startActivity(intent);
+            }
         });
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+                Intent intent = new Intent(ShowCart.this, HomePage.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 }
