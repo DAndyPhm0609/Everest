@@ -47,13 +47,14 @@
                 app:srcCompat="@drawable/share_icon" />
 
             <ImageButton
-                android:id="@+id/wishlist"
+                android:id="@+id/addCart"
                 android:layout_width="35dp"
                 android:layout_height="27dp"
-                android:background="@android:color/transparent"
                 android:layout_marginStart="220dp"
                 android:layout_marginTop="-27dp"
-                app:srcCompat="@drawable/wishlist_icon" />
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/_619489_add_and_cart_ecommerce_shopping_icon" />
 
             <TextView
                 android:id="@+id/description"

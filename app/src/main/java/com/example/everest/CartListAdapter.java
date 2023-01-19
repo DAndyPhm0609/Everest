@@ -1,6 +1,6 @@
 package com.example.everest;
 
-import static com.example.everest.ShowCart.cartList;
+import static com.example.everest.HomePage.cartList;
 import static com.example.everest.ShowCart.setAmount;
 import static com.example.everest.ShowCart.setDeselectAll;
 import static com.example.everest.ShowCart.setSelectAll;
@@ -118,7 +118,9 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
                 total += cost;
             }
         }
-        if (num == 0) {
+        if (cartList.isEmpty()) {
+            setDeselectAll();
+        } else if (num == 0) {
             setSelectAll();
             setAmount(0);
         } else {

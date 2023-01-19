@@ -1,5 +1,7 @@
 package com.example.everest;
 
+import static com.example.everest.HomePage.cartList;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
@@ -13,7 +15,6 @@ public class BookDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
-
         ImageButton share = (ImageButton) findViewById(R.id.shareButton);
         share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -22,11 +23,11 @@ public class BookDetail extends AppCompatActivity {
             }
         });
 
-        ImageButton wishList = (ImageButton) findViewById(R.id.wishlist);
-        wishList.setOnClickListener(new View.OnClickListener() {
+        ImageButton addCart = (ImageButton) findViewById(R.id.addCart);
+        addCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                cartList.add(new Book("Harry Potter", "J. K. Rowling", "30", 5.0, "fantasy", "US"));
             }
         });
     }

@@ -1,5 +1,7 @@
 package com.example.everest;
 
+import static com.example.everest.HomePage.cartList;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,12 +14,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ShowCart extends AppCompatActivity {
-
-    public static List<Book> cartList = new ArrayList<>();
     CartListAdapter adapter;
     RecyclerView recyclerView;
     static CheckBox selectAll;
@@ -50,9 +47,6 @@ public class ShowCart extends AppCompatActivity {
         recyclerView = findViewById(R.id.cartList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(ShowCart.this));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", "30", 5.0, "fantasy", "US"));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", "30", 5.0, "fantasy", "US"));
-        cartList.add(new Book("Harry Potter", "J. K. Rowling", "30", 5.0, "fantasy", "US"));
         adapter = new CartListAdapter(cartList, getApplication(),listener);
         recyclerView.setAdapter(adapter);
         listener = new CartListAdapter.ClickListener() {

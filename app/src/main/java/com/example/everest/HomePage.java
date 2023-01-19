@@ -25,9 +25,7 @@ import java.util.List;
 
 public class HomePage extends AppCompatActivity {
     private ArrayList<BookData> list;
-    private ArrayList<Book> newList;
-    private ArrayList<Book> newlist;
-
+    public static List<Book> cartList = new ArrayList<>();
     private RecyclerView recyclerBook;
     private static final String TAG = "HomePage";
     private TextView welcomeView;
