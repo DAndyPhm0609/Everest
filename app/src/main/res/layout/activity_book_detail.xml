@@ -38,21 +38,12 @@
                 android:text="Harry Porter" />
 
             <ImageButton
-                android:id="@+id/shareButton"
-                android:layout_width="35dp"
-                android:layout_height="27dp"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="150dp"
-                app:srcCompat="@drawable/share_icon" />
-
-            <ImageButton
                 android:id="@+id/wishlist"
                 android:layout_width="35dp"
                 android:layout_height="27dp"
                 android:background="@android:color/transparent"
-                android:layout_marginStart="220dp"
-                android:layout_marginTop="-27dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="15dp"
                 app:srcCompat="@drawable/wishlist_icon" />
 
             <TextView
@@ -76,4 +67,44 @@
                 android:fontFamily="@font/poppins_light"/>
         </LinearLayout>
     </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:text="Price: " />
+
+        <ImageButton
+            android:id="@+id/addCart"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/blue"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="130dp"
+            app:srcCompat="@drawable/ic_action_name" />
+
+        <Button
+            android:id="@+id/viewWishList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Wishlist"
+            android:backgroundTint="@color/blue"
+            android:layout_marginStart="230dp"/>
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

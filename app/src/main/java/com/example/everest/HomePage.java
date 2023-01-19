@@ -37,7 +37,6 @@ public class HomePage extends AppCompatActivity {
     private BookDisplayAdapter bookAdapter;
     private ImageButton showCart;
     private ImageButton info;
-    TextView welcomeView;
 
 
     @Override

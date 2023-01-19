@@ -38,7 +38,7 @@
                 android:layout_marginTop="-29dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_bold"
-                android:text="
+                android:text=""
                 android:textColor="@color/black" />
 
             <ImageButton
