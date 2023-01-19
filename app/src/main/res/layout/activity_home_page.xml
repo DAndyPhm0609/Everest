@@ -22,12 +22,11 @@
 
             <ImageButton
                 android:id="@+id/cusInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="35dp"
                 android:background="@color/white"
-                android:contentDescription="TODO"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/customer_info" />
@@ -35,23 +34,22 @@
             <TextView
                 android:id="@+id/welcomeText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="-25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="-29dp"
+                android:layout_gravity="center"
                 android:fontFamily="@font/poppins_bold"
-                android:text=""
+                android:text="
                 android:textColor="@color/black" />
 
             <ImageButton
                 android:id="@+id/shoppingCart"
-                android:layout_width="33dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="375dp"
-                android:layout_marginTop="-27dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="355dp"
+                android:layout_marginTop="-35dp"
                 android:layout_marginEnd="10dp"
-                android:background="@color/white"
-                android:paddingRight="10dp"
-                app:layout_constraintEnd_toEndOf="@id/textView"
+                android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="@id/welcomeText"
                 app:layout_constraintTop_toTopOf="@id/cusInfo"
                 app:srcCompat="@drawable/ic_action_name" />
 
@@ -67,7 +65,7 @@
                 android:queryHint="Titles, authors, or topics"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
             <TextView
                 android:id="@+id/textView2"

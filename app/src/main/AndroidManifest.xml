@@ -15,7 +15,11 @@
         android:theme="@style/Theme.Everest"
         tools:targetApi="31">
         <activity
+
             android:name=".BookDetail"
+
+            android:name=".SuccessDeli"
+
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

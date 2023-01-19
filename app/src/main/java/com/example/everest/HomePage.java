@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.media.Image;
 import android.widget.ImageButton;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,6 +26,8 @@ import java.util.List;
 public class HomePage extends AppCompatActivity {
     private ArrayList<BookData> list;
     private ArrayList<Book> newList;
+    private ArrayList<Book> newlist;
+
     private RecyclerView recyclerBook;
     private static final String TAG = "HomePage";
     private TextView welcomeView;
@@ -37,6 +37,8 @@ public class HomePage extends AppCompatActivity {
     private BookDisplayAdapter bookAdapter;
     private ImageButton showCart;
     private ImageButton info;
+    TextView welcomeView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +52,9 @@ public class HomePage extends AppCompatActivity {
         Intent i = getIntent();
         userName = (String) i.getStringExtra("name");
         System.out.println("From homepage" + userName);
-
         welcomeView.setText(String.format("Hello %s", userName));
 
 //        addButton = (Button) findViewById(R.id.addButton);
-//
 //        addButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
