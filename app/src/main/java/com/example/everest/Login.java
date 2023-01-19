@@ -14,9 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
 
 public class Login extends AppCompatActivity {
     Button login;
@@ -24,6 +30,8 @@ public class Login extends AppCompatActivity {
     EditText email, password;
     TextView emailV, passV;
     FirebaseAuth mAuth;
+    FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,21 +64,41 @@ public class Login extends AppCompatActivity {
     }
 
     private void loginUser() {
-        String Email = email.getText().toString();
-        String Password = password.getText().toString();
+        String emailLogin = email.getText().toString();
+        String passwordLogin = password.getText().toString();
 
-        if (TextUtils.isEmpty(Email)) {
+        if (TextUtils.isEmpty(emailLogin)) {
             email.setError("Email cannot be empty");
             email.requestFocus();
-        } else if (TextUtils.isEmpty(Password)) {
+        } else if (TextUtils.isEmpty(passwordLogin)) {
             password.setError("Password cannot be empty");
             password.requestFocus();
         } else {
-            mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.signInWithEmailAndPassword(emailLogin, passwordLogin).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        startActivity(new Intent(Login.this, HomePage.class));
+                        fireStore.collection("users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+
+                                for (DocumentSnapshot documentSnapshot : snapshotList) {
+                                    User user = documentSnapshot.toObject(User.class);
+
+                                    String email = user.getEmail();
+                                    if(emailLogin.equals(email)){
+                                        userName = user.getName();
+                                        System.out.println(userName);
+
+                                        Intent i = new Intent(Login.this, HomePage.class);
+                                        i.putExtra("name", userName);
+                                        startActivity(i);
+                                        break;
+                                    }
+                                }
+                            }
+                        });
                     } else {
                         Toast.makeText(Login.this, "Registration Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

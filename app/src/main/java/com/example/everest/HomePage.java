@@ -6,32 +6,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.widget.ImageButton;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
-
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class HomePage extends AppCompatActivity {
-    private ArrayList<BookData> list = new ArrayList<>();
+    private ArrayList<BookData> list;
+    private ArrayList<Book> newlist;
     private RecyclerView recyclerBook;
     private static final String TAG = "HomePage";
 
@@ -40,6 +33,8 @@ public class HomePage extends AppCompatActivity {
     private BookDisplayAdapter bookAdapter;
     private ImageButton showCart;
     private ImageButton info;
+    TextView welcomeView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +42,16 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         recyclerBook = findViewById(R.id.recyclerView);
 
+        welcomeView = (TextView) findViewById(R.id.welcomeText);
+        String userName;
+
+        Intent i = getIntent();
+        userName = (String) i.getStringExtra("name");
+        System.out.println("From homepage" + userName);
+
+        welcomeView.setText(String.format("Hello: %s", userName));
+
 //        addButton = (Button) findViewById(R.id.addButton);
-//
-//        list = new ArrayList<>();
-//        createBookList();
-//
 //        addButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -59,6 +59,9 @@ public class HomePage extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
+
+        list = new ArrayList<>();
+        createBookList();
 
         bookAdapter = new BookDisplayAdapter(this, list);
         recyclerBook.setAdapter(bookAdapter);
