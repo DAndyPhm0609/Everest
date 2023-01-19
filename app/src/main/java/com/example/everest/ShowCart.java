@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +78,9 @@ public class ShowCart extends AppCompatActivity {
             }
         });
         checkout.setOnClickListener(view -> {
-            if (!amount.getText().toString().equals("0")){
+            if (amount.getText().toString().equals("$0")){
+                Toast.makeText(ShowCart.this, "You must select at least 1 item.", Toast.LENGTH_SHORT).show();
+            } else {
                 Intent intent = new Intent(ShowCart.this, Delivery.class);
                 intent.putExtra("total", amount.getText().toString());
                 startActivity(intent);
