@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.widget.ImageButton;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.everest.databinding.ActivityHomePageBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -34,6 +36,7 @@ public class HomePage extends AppCompatActivity {
     private ArrayList<BookData> list = new ArrayList<>();
     private RecyclerView recyclerBook;
     private static final String TAG = "HomePage";
+    ActivityHomePageBinding binding;
 
     Button addButton;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
@@ -44,8 +47,16 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        binding = ActivityHomePageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         recyclerBook = findViewById(R.id.recyclerView);
+
+        String[] name;
+        String[] author;
+        String[] price;
+        ImageButton[] wishList;
+        Image[] star;
+        Image[] bookCover;
 
 //        addButton = (Button) findViewById(R.id.addButton);
 //

@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Everest"
         tools:targetApi="31">
         <activity
+            android:name=".BookDetail"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Delivery"
             android:exported="false">
             <meta-data
@@ -24,8 +31,6 @@
         <activity
             android:name=".ShowCart"
             android:exported="false">
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -73,6 +78,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
