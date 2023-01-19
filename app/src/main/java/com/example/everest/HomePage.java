@@ -10,7 +10,9 @@ import android.widget.ImageButton;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -19,14 +21,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class HomePage extends AppCompatActivity {
 
+    TextView welcomeView;
     public RecyclerView recyclerBook;
 
     public ArrayList<BookData> recyclerList = new ArrayList<>();
@@ -41,10 +42,12 @@ public class HomePage extends AppCompatActivity {
     ListViewAdapter listAdapter;
     ListView listView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
 
         createNewList();
         listAdapter = new ListViewAdapter(bookCardDetailArrayList);
@@ -54,6 +57,16 @@ public class HomePage extends AppCompatActivity {
         createBookList();
         recyclerBook = findViewById(R.id.recyclerView);
         bookAdapter = new BookDisplayAdapter(this, recyclerList);
+
+
+        welcomeView = (TextView) findViewById(R.id.welcomeText);
+        String userName;
+
+        Intent i = getIntent();
+        userName = (String) i.getStringExtra("name");
+        System.out.println("From homepage" + userName);
+        welcomeView.setText(String.format("Hello %s", userName));
+
         recyclerBook.setAdapter(bookAdapter);
         recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -86,7 +99,6 @@ public class HomePage extends AppCompatActivity {
 
 
     public void createBookList() {
-        //function to
         fireStore.collection("books")
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
