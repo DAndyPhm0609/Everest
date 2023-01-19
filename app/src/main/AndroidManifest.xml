@@ -16,63 +16,63 @@
         android:theme="@style/Theme.Everest"
         tools:targetApi="31">
         <activity
-            android:name=".BookDetail"
+            android:name="com.example.everest.BookDetail"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SuccessDeli"
+            android:name="com.example.everest.SuccessDeli"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Delivery"
+            android:name="com.example.everest.Delivery"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ShowCart"
+            android:name="com.example.everest.ShowCart"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddBook"
+            android:name="com.example.everest.AddBook"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SignUp"
+            android:name="com.example.everest.SignUp"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Login"
+            android:name="com.example.everest.Login"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HomePage"
+            android:name="com.example.everest.HomePage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.everest.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -84,7 +84,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainPage"
+            android:name="com.example.everest.MainPage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

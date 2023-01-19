@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.everest.databinding.ActivityHomePageBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,8 +28,9 @@ import java.util.List;
 
 public class HomePage extends AppCompatActivity {
 
-    private ArrayList<BookData> list;
+    public ArrayList<BookData> recyclerList = new ArrayList<>();
     public static List<Book> cartList = new ArrayList<>();
+    public ArrayList<BookCardDetail> bookCardDetailArrayList = new ArrayList<>();
     private RecyclerView recyclerBook;
     private static final String TAG = "HomePage";
     private TextView welcomeView;
@@ -38,10 +40,7 @@ public class HomePage extends AppCompatActivity {
     private BookDisplayAdapter bookAdapter;
     private ImageButton showCart;
     private ImageButton info;
-//    TextView welcomeView;
 
-    public ArrayList<BookData> recyclerList = new ArrayList<>();
-    public ArrayList<BookCardDetail> bookCardDetailArrayList = new ArrayList<>();
 
     ListViewAdapter listAdapter;
     ListView listView;
@@ -90,7 +89,7 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText(HomePage.this, "user info", Toast.LENGTH_SHORT).show();
             }
         });
-        //        addButton = (Button) findViewById(R.id.addButton);
+//                addButton = (Button) findViewById(R.id.addButton);
 //        addButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
