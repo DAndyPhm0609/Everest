@@ -51,7 +51,7 @@ public class HomePage extends AppCompatActivity {
         userName = (String) i.getStringExtra("name");
         System.out.println("From homepage" + userName);
 
-        welcomeView.setText(String.format("Hello: %s", userName));
+        welcomeView.setText(String.format("Hello %s", userName));
 
 //        addButton = (Button) findViewById(R.id.addButton);
 //
@@ -91,7 +91,6 @@ public class HomePage extends AppCompatActivity {
 
 
     public void createBookList() {
-        //function to
         fireStore.collection("books")
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
