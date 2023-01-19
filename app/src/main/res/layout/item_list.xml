@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/harry"
+        android:id="@+id/cardImageUrl"
         android:layout_width="98dp"
         android:layout_height="111dp"
         android:layout_marginStart="1dp"
@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/hp_cover" />
 
     <TextView
-        android:id="@+id/bookName1"
+        android:id="@+id/cardBookName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -24,11 +24,11 @@
         android:text="Harry Porter"
         android:textColor="@color/black"
         android:fontFamily="@font/poppins_semibold"
-        app:layout_constraintStart_toEndOf="@+id/harry"
+        app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/author"
+        android:id="@+id/cardAuthorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -36,21 +36,21 @@
         android:fontFamily="@font/poppins_light"
         android:text="J.K.Rowling"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/harry"
-        app:layout_constraintTop_toBottomOf="@+id/bookName1" />
+        app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+        app:layout_constraintTop_toBottomOf="@+id/cardBookName" />
 
     <ImageView
-        android:id="@+id/star"
+        android:id="@+id/cardStar"
         android:layout_width="15dp"
         android:layout_height="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="13dp"
-        app:layout_constraintStart_toEndOf="@+id/harry"
-        app:layout_constraintTop_toBottomOf="@+id/author"
+        app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+        app:layout_constraintTop_toBottomOf="@+id/cardAuthorName"
         app:srcCompat="@drawable/star_icon" />
 
     <TextView
-        android:id="@+id/rating"
+        android:id="@+id/cardBookRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -58,11 +58,11 @@
         android:text="5.0"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/harry"
-        app:layout_constraintTop_toBottomOf="@+id/author" />
+        app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+        app:layout_constraintTop_toBottomOf="@+id/cardAuthorName" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/cardBookPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/wishList"
+        android:id="@+id/cardWishList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

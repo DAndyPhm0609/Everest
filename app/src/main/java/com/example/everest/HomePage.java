@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import java.util.List;
 
 
 public class HomePage extends AppCompatActivity {
+
     private ArrayList<BookData> list;
     public static List<Book> cartList = new ArrayList<>();
     private RecyclerView recyclerBook;
@@ -37,12 +40,27 @@ public class HomePage extends AppCompatActivity {
     private ImageButton info;
 //    TextView welcomeView;
 
+    public ArrayList<BookData> recyclerList = new ArrayList<>();
+    public ArrayList<BookCardDetail> bookCardDetailArrayList = new ArrayList<>();
+
+    ListViewAdapter listAdapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+
+        createNewList();
+        listAdapter = new ListViewAdapter(bookCardDetailArrayList);
+        listView = findViewById(R.id.listView);
+        listView.setAdapter(listAdapter);
+
+        createBookList();
         recyclerBook = findViewById(R.id.recyclerView);
+        bookAdapter = new BookDisplayAdapter(this, recyclerList);
+
 
         welcomeView = (TextView) findViewById(R.id.welcomeText);
         String userName;
@@ -52,19 +70,6 @@ public class HomePage extends AppCompatActivity {
         System.out.println("From homepage" + userName);
         welcomeView.setText(String.format("Hello %s", userName));
 
-//        addButton = (Button) findViewById(R.id.addButton);
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(HomePage.this, AddBook.class);
-//                startActivity(i);
-//            }
-//        });
-
-        list = new ArrayList<>();
-        createBookList();
-
-        bookAdapter = new BookDisplayAdapter(this, list);
         recyclerBook.setAdapter(bookAdapter);
         recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -85,6 +90,14 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText(HomePage.this, "user info", Toast.LENGTH_SHORT).show();
             }
         });
+        //        addButton = (Button) findViewById(R.id.addButton);
+//        addButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(HomePage.this, AddBook.class);
+//                startActivity(i);
+//            }
+//        });
     }
 
 
@@ -101,12 +114,39 @@ public class HomePage extends AppCompatActivity {
                             String name = book.getName();
                             String imgURL = book.getUrl();
 
-                            list.add(new BookData(name, imgURL));
+                            recyclerList.add(new BookData(name, imgURL));
                         }
                     }
                 });
     }
 
-    private void addBookToCollection() {
+    public void createNewList() {
+        fireStore.collection("books")
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+
+                        for (DocumentSnapshot documentSnapshot : snapshotList) {
+                            BookCardDetail book = documentSnapshot.toObject(BookCardDetail.class);
+
+                            String name = book.getName();
+                            String author = book.getAuthor();
+                            String price = book.getPrice();
+                            Double rating = book.getRating();
+                            String imgURL = book.getUrl();
+                            String star = "https://uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.png";
+                            String wishList = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-rR5-UUarzgaOnGCMMC8OV06K2zwdd_ZJcX60BP0&s";
+
+                            System.out.println(name);
+                            System.out.println(author);
+                            System.out.println(price);
+                            System.out.println(rating);
+                            System.out.println(imgURL);
+
+                            bookCardDetailArrayList.add(new BookCardDetail(name, author, price, rating, star, imgURL, wishList));
+                        }
+                    }
+                });
     }
 }
