@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.widget.ImageButton;
 import android.os.Bundle;
 import android.view.View;
@@ -24,9 +25,12 @@ import java.util.List;
 
 public class HomePage extends AppCompatActivity {
     private ArrayList<BookData> list;
+    private ArrayList<Book> newList;
     private ArrayList<Book> newlist;
+
     private RecyclerView recyclerBook;
     private static final String TAG = "HomePage";
+    private TextView welcomeView;
 
     Button addButton;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
@@ -48,8 +52,7 @@ public class HomePage extends AppCompatActivity {
         Intent i = getIntent();
         userName = (String) i.getStringExtra("name");
         System.out.println("From homepage" + userName);
-
-        welcomeView.setText(String.format("Hello: %s", userName));
+        welcomeView.setText(String.format("Hello %s", userName));
 
 //        addButton = (Button) findViewById(R.id.addButton);
 //        addButton.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +91,6 @@ public class HomePage extends AppCompatActivity {
 
 
     public void createBookList() {
-        //function to
         fireStore.collection("books")
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
