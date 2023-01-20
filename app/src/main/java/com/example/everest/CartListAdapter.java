@@ -25,13 +25,11 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
     static List<Book> list;
     static SparseBooleanArray itemStateArray= new SparseBooleanArray();
     Context context;
-    ClickListener listener;
     public CartListAdapter(List<Book> list,
-                                 Context context,ClickListener listener)
+                                 Context context)
     {
         this.list = list;
         this.context = context;
-        this.listener = listener;
     }
 
 
@@ -83,8 +81,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
             @NonNull RecyclerView recyclerView)
     {
         super.onAttachedToRecyclerView(recyclerView);
-    }
-    public interface ClickListener{
     }
 
     @SuppressLint("NotifyDataSetChanged")
