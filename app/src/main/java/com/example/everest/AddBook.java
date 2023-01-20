@@ -20,7 +20,6 @@ import java.util.Map;
 public class AddBook extends AppCompatActivity {
 
     FirebaseFirestore fireStore;
-
     Button addButton;
     EditText nameText, authorText, priceText, descText, imageText;
     RatingBar bookRating;
@@ -33,7 +32,6 @@ public class AddBook extends AppCompatActivity {
         setContentView(R.layout.activity_add_book);
 
         addButton = (Button) findViewById(R.id.addButton);
-
         nameText = (EditText) findViewById(R.id.bookName);
         authorText = (EditText) findViewById(R.id.authorName);
         priceText = (EditText) findViewById(R.id.bookPrice);

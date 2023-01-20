@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class BookDetail extends AppCompatActivity {
+    String name, author, des, url, price;
+    double rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +21,6 @@ public class BookDetail extends AppCompatActivity {
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
@@ -27,7 +28,7 @@ public class BookDetail extends AppCompatActivity {
         addCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartList.add(new Book("Harry Potter", "J. K. Rowling", "30", 5.0, "fantasy", "US"));
+                cartList.add(new Book(name, author, des, rating, price, url ));
             }
         });
     }

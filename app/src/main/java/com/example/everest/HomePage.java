@@ -77,14 +77,7 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText(HomePage.this, "user info", Toast.LENGTH_SHORT).show();
             }
         });
-//                addButton = (Button) findViewById(R.id.addButton);
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(HomePage.this, AddBook.class);
-//                startActivity(i);
-//            }
-//        });
+
         //call function to generate our adapter view
         generateRecyclerView();
         generateListView();

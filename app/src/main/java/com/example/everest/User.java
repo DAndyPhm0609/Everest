@@ -19,6 +19,7 @@ public class User {
 
     }
 
+    //Assign getter setter
     public String getName() {
         return name;
     }
