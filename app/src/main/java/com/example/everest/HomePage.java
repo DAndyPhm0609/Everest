@@ -49,7 +49,7 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        createBookList();
+
         welcomeView = (TextView) findViewById(R.id.welcomeText);
         String userName;
 
@@ -100,31 +100,5 @@ public class HomePage extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         listView.setAdapter(listAdapter);
     }
-    public void createBookList() {
-        fireStore.collection("books")
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
 
-                        for (DocumentSnapshot documentSnapshot : snapshotList) {
-                            Book book = documentSnapshot.toObject(Book.class);
-
-                            String name = book.getName();
-                            String author = book.getAuthor();
-                            String price = book.getPrice();
-                            String des = book.getDes();
-                            Double rating = book.getRating();
-                            String imgURL = book.getUrl();
-                            System.out.println(name);
-                            System.out.println(author);
-                            System.out.println(price);
-                            System.out.println(rating);
-                            System.out.println(imgURL);
-
-                            recyclerList.add(new Book(name, author, price, rating, des, imgURL));
-                        }
-                    }
-                });
-    }
 }
