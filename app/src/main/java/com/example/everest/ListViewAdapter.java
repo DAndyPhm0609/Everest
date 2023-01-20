@@ -24,15 +24,10 @@ import java.util.ArrayList;
 class ListViewAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    ArrayList<BookCardDetail> bookList;
+    ArrayList<Book> bookList;
 
-    public ListViewAdapter(Context context, int layout, ArrayList<BookCardDetail> bookList){
+    public ListViewAdapter(Context context, ArrayList<Book> bookList){
         this.context = context;
-        this.layout = layout;
-        this.bookList = bookList;
-    }
-
-    ListViewAdapter(ArrayList<BookCardDetail> bookList) {
         this.bookList = bookList;
     }
 
@@ -60,7 +55,7 @@ class ListViewAdapter extends BaseAdapter {
             viewRequest = View.inflate(parent.getContext(), R.layout.item_list, null);
         } else viewRequest = convertView;
 
-        BookCardDetail book = (BookCardDetail) getItem(position);
+        Book book = (Book) getItem(position);
 
         ImageView star = convertView.findViewById(R.id.cardStar);
         TextView name = convertView.findViewById(R.id.cardBookName);
