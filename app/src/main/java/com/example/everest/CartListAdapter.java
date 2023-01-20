@@ -7,6 +7,7 @@ import static com.example.everest.ShowCart.setSelectAll;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +70,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
                 .setText("$" + list.get(position).price);
         viewHolder.buyCheckBox.setChecked(itemStateArray.get(position));
         viewHolder.buyCheckBox.setOnClickListener(v -> checkCheckBox(index, !itemStateArray.get(index)));
-        viewHolder.cartCard.setOnClickListener(view -> Toast.makeText(view.getContext(),String.valueOf(index),Toast.LENGTH_SHORT).show());
     }
     @Override
     public int getItemCount()
