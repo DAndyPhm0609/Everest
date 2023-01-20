@@ -117,6 +117,7 @@ public class Login extends AppCompatActivity {
         }
     }
     public void createBookList() {
+        //call
         fireStore.collection("books")
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -132,8 +133,27 @@ public class Login extends AppCompatActivity {
                             String des = book.getDes();
                             Double rating = book.getRating();
                             String imgURL = book.getUrl();
-                            recyclerList.add(new Book(name, author, price, rating, des, imgURL));
                             BookArrayList.add(new Book(name, author, price, rating, des, imgURL));
+                        }
+                    }
+                });
+
+        fireStore.collection("books").whereEqualTo("rating", 5)
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+
+                        for (DocumentSnapshot documentSnapshot : snapshotList) {
+                            Book book = documentSnapshot.toObject(Book.class);
+
+                            String name = book.getName();
+                            String author = book.getAuthor();
+                            String price = book.getPrice();
+                            String des = book.getDes();
+                            Double rating = book.getRating();
+                            String imgURL = book.getUrl();
+                            recyclerList.add(new Book(name, author, price, rating, des, imgURL));
                         }
                     }
                 });
