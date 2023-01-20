@@ -28,7 +28,7 @@ import java.util.List;
 
 public class HomePage extends AppCompatActivity {
 
-    public ArrayList<BookData> recyclerList = new ArrayList<>();
+    public static ArrayList<BookData> recyclerList = new ArrayList<>();
     public static List<Book> cartList = new ArrayList<>();
     public ArrayList<BookCardDetail> bookCardDetailArrayList = new ArrayList<>();
     private RecyclerView recyclerBook;
@@ -49,17 +49,10 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
-
         createNewList();
         listAdapter = new ListViewAdapter(bookCardDetailArrayList);
         listView = findViewById(R.id.listView);
         listView.setAdapter(listAdapter);
-
-        createBookList();
-        recyclerBook = findViewById(R.id.recyclerView);
-        bookAdapter = new BookDisplayAdapter(this, recyclerList);
-
 
         welcomeView = (TextView) findViewById(R.id.welcomeText);
         String userName;
@@ -68,9 +61,6 @@ public class HomePage extends AppCompatActivity {
         userName = (String) i.getStringExtra("name");
         System.out.println("From homepage" + userName);
         welcomeView.setText(String.format("Hello %s", userName));
-
-        recyclerBook.setAdapter(bookAdapter);
-        recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         showCart = (ImageButton) findViewById(R.id.shoppingCart);
         showCart.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +87,17 @@ public class HomePage extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
+        generateRecyclerView();
     }
 
+    private void generateRecyclerView() {
+        createBookList();
+        recyclerBook = findViewById(R.id.recyclerView);
+        recyclerBook.setHasFixedSize(true);
+        recyclerBook.setLayoutManager(new LinearLayoutManager(HomePage.this, LinearLayoutManager.HORIZONTAL, false));
+        bookAdapter = new BookDisplayAdapter(getApplication(), recyclerList);
+        recyclerBook.setAdapter(bookAdapter);
+    }
 
     public void createBookList() {
         fireStore.collection("books")
@@ -112,7 +111,6 @@ public class HomePage extends AppCompatActivity {
 
                             String name = book.getName();
                             String imgURL = book.getUrl();
-
                             recyclerList.add(new BookData(name, imgURL));
                         }
                     }
