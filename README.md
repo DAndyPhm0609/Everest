@@ -1,6 +1,47 @@
 # Everest
-Team member contribution: 
-Pham Hoang Thien An:
+
+Team contribution:
+Pham Hoang Thien An: 
+
+In charge of building and implementing the Firestore firebase into the project.   
+
+Fetch data from database to create the list of data to display into the homepage. 
+
+Assist in saving the user data to firestore when user sign up for an account.  
+
+Creating the adapter for viewing the list of book data in homepage.  
+
+ Assist in editing the homepage layout, decorating the homepage.
+
+ 
+
+Nguyen Minh Duy Uyen: 
+
+Building the order function: 
+
+Add item to cart from button in book detail view and homepage 
+
+Create ShowCart, Delivery, SuccessDeli 
+
+Implement and fix bugs for all Recycler View 
+
+Add App Icon 
+
+Create Splash Screen 
+
+Add Background to Login, Signup 
+
+Decorate Homepage 
+
+Park Anh Kiet:  
+
+In charge of building main page, and save data user to Firestore. 
+
+Sign in, sign up and sign out function. 
+
+Fetch data from Firestore documents and display user information 
+
+ 
 
 Functionality: Our app is a mobile online bookstore for android devices. First timer user can sign up an account to access our store. An account will require the user to insert their name, email, password, phone number, and address.
 After signing up for an account, they will be able to sign in using that account by clicking the sign in buttom. 
@@ -17,3 +58,7 @@ Furthermore, we also used Picasso API to display images in imageView using the U
 
 
 To get user information, we used FirebaseFirestore, FirebaseAuthentication, and Intent to send the user information when registered to display the user information and store user information into the Firestore. The Firestore will then save the user information under a JSON-like file. To set the button we used Intent to change around the activities to have a better usage of the application.
+
+Open issues and known bugs: Couldn't implement function to distinct user login and admin login, therefore, we couldn't implement the function to add more book into firebase.
+The radio button to switch between each fragment in homepage isn't implemented on time.
+Search view bar is non functional.
