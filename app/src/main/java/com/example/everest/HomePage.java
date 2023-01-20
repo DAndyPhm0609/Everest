@@ -54,7 +54,6 @@ public class HomePage extends AppCompatActivity {
 
         //get intent from login to get user's name
         Intent i = getIntent();
-
         //get username from intent to display in welcome text
         name = (String) i.getStringExtra("name");
         System.out.println("From homepage" + name);
