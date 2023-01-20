@@ -1,5 +1,6 @@
 package com.example.everest;
 
+import static com.example.everest.HomePage.BookArrayList;
 import static com.example.everest.HomePage.recyclerList;
 
 import androidx.annotation.NonNull;
@@ -131,6 +132,7 @@ public class Login extends AppCompatActivity {
                             Double rating = book.getRating();
                             String imgURL = book.getUrl();
                             recyclerList.add(new Book(name, author, price, rating, des, imgURL));
+                            BookArrayList.add(new Book(name, author, price, rating, des, imgURL));
                         }
                     }
                 });
