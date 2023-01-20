@@ -14,3 +14,6 @@ After the user has chosen all of the book that they want, user can click to the 
 
 Technology used: We implemented Firebase firestore into our project as a our persistent database.
 Furthermore, we also used Picasso API to display images in imageView using the URL of the image. Link to the API is here: https://github.com/square/picasso
+
+
+To get user information, we used FirebaseFirestore, FirebaseAuthentication, and Intent to send the user information when registered to display the user information and store user information into the Firestore. The Firestore will then save the user information under a JSON-like file. To set the button we used Intent to change around the activities to have a better usage of the application.
