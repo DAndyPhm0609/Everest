@@ -46,6 +46,7 @@ public class SignUp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fireStore = FirebaseFirestore.getInstance();
 
+        //submit button
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +54,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
     private void createUser() {
         String Email = email.getText().toString();
         String Password = password.getText().toString();
@@ -60,6 +62,7 @@ public class SignUp extends AppCompatActivity {
         String Address = address.getText().toString();
         String Phone = number.getText().toString();
 
+        //check if any edit text is invalid
         if (TextUtils.isEmpty(Email)) {
             email.setError("Email cannot be empty");
             email.requestFocus();
@@ -77,6 +80,7 @@ public class SignUp extends AppCompatActivity {
             number.requestFocus();
         } else {
             mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                //all data accepted, create database for new user
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
@@ -102,6 +106,8 @@ public class SignUp extends AppCompatActivity {
 
         }
     }
+
+    //go back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

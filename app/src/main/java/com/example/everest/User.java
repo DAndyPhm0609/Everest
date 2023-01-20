@@ -6,6 +6,7 @@ public class User {
     String name, password, email, phone, address;
     List<Book> favouriteBookList;
 
+    //constructor
     public User(String name, String password, String email, String phone, String address, List<Book> favouriteBookList){
         this.name = name;
         this.password = password;
@@ -15,10 +16,12 @@ public class User {
         this.favouriteBookList = favouriteBookList;
     }
 
+    //empty constructor
     public User(){
 
     }
 
+    //setter & getter
     public String getName() {
         return name;
     }

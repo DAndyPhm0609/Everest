@@ -21,6 +21,8 @@ public class Delivery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //initial all elements in this layout
         name = findViewById(R.id.delName);
         address = findViewById(R.id.delAddress);
         phone = findViewById(R.id.delPhone);
@@ -32,11 +34,14 @@ public class Delivery extends AppCompatActivity {
         address.setText(HomePage.userAddress);
         phone.setText(HomePage.userPhone);
         total.setText(cost);
+
+        //display successful purchase
         confirm.setOnClickListener(view -> {
             Intent intent1 = new Intent(Delivery.this, SuccessDeli.class);
             startActivityForResult(intent1, 200);
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -48,6 +53,8 @@ public class Delivery extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    //go back to homepage when press main page button
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);

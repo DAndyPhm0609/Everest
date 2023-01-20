@@ -12,6 +12,7 @@ public class SuccessDeli extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_success_deli);
+        //process back to homepage
         main = findViewById(R.id.backMain);
         main.setOnClickListener(view -> {
             setResult(RESULT_OK);

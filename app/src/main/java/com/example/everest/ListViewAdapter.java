@@ -32,6 +32,7 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
         this.list = list;
     }
 
+    //create view holder to store all element
     @NonNull
     @Override
     public ListViewAdapter.listViewHolder
@@ -50,6 +51,7 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
         return new ListViewAdapter.listViewHolder(photoView);
     }
 
+    //set all element exist in list view
     @SuppressLint("SetTextI18n")
     public void
     onBindViewHolder(final ListViewAdapter.listViewHolder viewHolder,
@@ -75,6 +77,8 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
                     context.startActivity(intent);
                 }
             });
+
+            //add to cart button
             viewHolder.addCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,6 +88,7 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
             });
         }
     }
+
     @Override
     public int getItemCount()
     {
@@ -92,13 +97,13 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
         }
         return list.size();
     }
+
     @Override
-    public void onAttachedToRecyclerView(
-            @NonNull RecyclerView recyclerView)
-    {
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+    //initial all element for vertical list view
      static class listViewHolder extends RecyclerView.ViewHolder{
         ImageView bookCover;
         TextView bookName;

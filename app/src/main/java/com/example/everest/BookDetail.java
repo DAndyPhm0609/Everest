@@ -28,6 +28,8 @@ public class BookDetail extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         int position = (int) intent.getExtras().get("index");
+
+        //initial element in this layout
         name = findViewById(R.id.detailName);
         name.setText(BookArrayList.get(position).getName());
 
@@ -43,6 +45,7 @@ public class BookDetail extends AppCompatActivity {
         cover = findViewById(R.id.detailCover);
         Picasso.get().load(BookArrayList.get(position).getUrl()).into(cover);
 
+        //add to cart button
         addCart = findViewById(R.id.addCart);
         addCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +55,8 @@ public class BookDetail extends AppCompatActivity {
             }
         });
     }
+
+    //go back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

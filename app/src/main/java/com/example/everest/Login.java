@@ -58,10 +58,12 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    //login function
     private void loginUser() {
         String emailLogin = email.getText().toString();
         String passwordLogin = password.getText().toString();
 
+        //check if email & password valid according to firestore
         if (TextUtils.isEmpty(emailLogin)) {
             email.setError("Email cannot be empty");
             email.requestFocus();
@@ -70,6 +72,7 @@ public class Login extends AppCompatActivity {
             password.requestFocus();
         } else {
             mAuth.signInWithEmailAndPassword(emailLogin, passwordLogin).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                //get database of user when sign in successful
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
@@ -78,12 +81,14 @@ public class Login extends AppCompatActivity {
                                 for (DocumentSnapshot documentSnapshot : task1.getResult()) {
                                     User user = documentSnapshot.toObject(User.class);
 
+                                    //store database into local variable to display in homepage and user info
                                     String email = user.getEmail();
                                     if (emailLogin.equals(email)) {
                                         userName = user.getName();
 
                                         Log.d("TAG", "USERNAME HERE, TRASH: " + userName);
 
+                                        //send data to homepage and user info
                                         Intent i = new Intent(Login.this, HomePage.class);
                                         i.putExtra("name", userName);
                                         i.putExtra("address", user.address);
@@ -94,6 +99,7 @@ public class Login extends AppCompatActivity {
                                 }
                             }
                         });
+                        //create horizontal recycler view
                         createBookList();
                     } else {
                         Toast.makeText(Login.this, "Registration Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -102,6 +108,8 @@ public class Login extends AppCompatActivity {
             });
         }
     }
+
+    //go back button if user have not registered
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -116,8 +124,10 @@ public class Login extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    //get book database from fire store and create recycler view, list view in homepage
     public void createBookList() {
-        //call
+        //create vertical list view
         fireStore.collection("books")
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -138,6 +148,7 @@ public class Login extends AppCompatActivity {
                     }
                 });
 
+        //create horizontal recycler view
         fireStore.collection("books").whereEqualTo("rating", 5)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

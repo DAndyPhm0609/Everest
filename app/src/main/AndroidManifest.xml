@@ -44,13 +44,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.everest.AddBook"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name="com.example.everest.SignUp"
             android:exported="false">
             <meta-data

@@ -33,7 +33,6 @@ import java.util.Map;
 
 public class UserInfo extends AppCompatActivity {
     TextView name,address,phone;
-//    static String userName, userAddress, userPhone;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String Uid;
@@ -52,6 +51,7 @@ public class UserInfo extends AppCompatActivity {
 
         Uid = mAuth.getCurrentUser().getUid();
 
+        //log out button
         logout = (Button) findViewById(R.id.logOut);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,29 +61,14 @@ public class UserInfo extends AppCompatActivity {
                 finish();
             }
         });
+
+        //display data from firestore checked by email
         name.setText(HomePage.userName);
         address.setText(HomePage.userAddress);
         phone.setText(HomePage.userPhone);
-
-
-//        fStore.collection("users").get()
-//                .addOnCompleteListener(task -> {
-//                    if (task.isSuccessful()) {
-//                        for(QueryDocumentSnapshot document:task.getResult()){
-//                            Log.d(TAG, document.getId() + "=>" + document.getData());
-//                            userName = getIntent().getStringExtra("name");
-//                            name.setText(userName);
-//                            userAddress = getIntent().getStringExtra("address");
-//                            address.setText(userAddress);
-//                            userPhone = getIntent().getStringExtra("phone");
-//                            phone.setText(userPhone);
-//                        }
-//                    }else{
-//                        Log.w(TAG,"Error getting User", task.getException());
-//                    }
-//
-//                });
     }
+
+    //go back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

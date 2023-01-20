@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,24 +24,31 @@ public class ShowCart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_cart);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //go back button
         selectAll = findViewById(R.id.selectAll);
         amount = findViewById(R.id.amount);
         checkout = findViewById(R.id.checkout);
         populateRecyclerView();
         onClickEvent();
     }
+    //auto update total price when user press check box
     public static void setAmount(int total) {
         amount.setText("$" + total);
     }
+
+    //set text Select All check box
     public static void setSelectAll() {
         selectAll.setChecked(true);
         selectAll.setText(R.string.deselect_all);
     }
+
+    //set text Deselect All check box
     public static void setDeselectAll() {
         selectAll.setChecked(false);
         selectAll.setText(R.string.select_all);
     }
+
+    //initial second recyclerView
     private void populateRecyclerView() {
         recyclerView = findViewById(R.id.cartList);
         recyclerView.setHasFixedSize(true);
@@ -69,6 +75,8 @@ public class ShowCart extends AppCompatActivity {
                 setAmount(0);
             }
         });
+
+        //check out button to delivery layout
         checkout.setOnClickListener(view -> {
             if (amount.getText().toString().equals("$0")){
                 Toast.makeText(ShowCart.this, "You must select at least 1 item.", Toast.LENGTH_SHORT).show();
@@ -81,7 +89,7 @@ public class ShowCart extends AppCompatActivity {
     }
 
 
-
+    //go back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -93,6 +101,8 @@ public class ShowCart extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    //get back straight to homepage
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);

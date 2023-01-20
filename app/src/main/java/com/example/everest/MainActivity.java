@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         }
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
+            //design delay wallpaper in welcome screen
             @Override
             public void run() {
                 Intent intent = new Intent(MainActivity.this, MainPage.class);

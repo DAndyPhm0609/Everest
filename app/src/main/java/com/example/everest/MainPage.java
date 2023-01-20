@@ -20,6 +20,8 @@ public class MainPage extends AppCompatActivity {
         }
         signin = (Button) findViewById(R.id.SignIn);
         signup = (Button) findViewById(R.id.SignUp);
+
+        //sign in button
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +30,8 @@ public class MainPage extends AppCompatActivity {
                 finish();
             }
         });
+
+        //sign up button
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

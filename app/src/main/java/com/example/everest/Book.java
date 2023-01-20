@@ -4,6 +4,7 @@ public class Book {
     String name, author, des, url, price;
     Double rating;
 
+    //constructor
     public Book(String name, String author, String price, Double rating, String des, String url){
         this.name = name;
         this.author = author;
@@ -13,8 +14,10 @@ public class Book {
         this.url = url;
     }
 
+    //empty constructor
     public Book(){}
 
+    //getter & setter
     public String getName() {
         return name;
     }

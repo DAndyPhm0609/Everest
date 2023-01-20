@@ -29,20 +29,17 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
     static List<Book> list;
     static SparseBooleanArray itemStateArray= new SparseBooleanArray();
     Context context;
-    public CartListAdapter(List<Book> list,
-                                 Context context)
-    {
+
+    public CartListAdapter(List<Book> list, Context context) {
         this.list = list;
         this.context = context;
     }
 
-
+    //create a holder to store all element exist in cart list
     @NonNull
     @Override
     public cartViewHolder
-    onCreateViewHolder(ViewGroup parent,
-                       int viewType)
-    {
+    onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context
                 = parent.getContext();
         LayoutInflater inflater
@@ -55,6 +52,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
         return new cartViewHolder(photoView);
     }
 
+    //set all element exist in cart list
     @SuppressLint("SetTextI18n")
     public void
     onBindViewHolder(final cartViewHolder viewHolder,
@@ -93,6 +91,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
         notifyDataSetChanged();
     }
 
+    //display tick when the user press check box
     public void checkCheckBox(int position, boolean value) {
         if (value)
             itemStateArray.put(position, true);
@@ -101,6 +100,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
         calcTotal();
     }
 
+    //calculate the total price when user press check out button
     @SuppressLint("NotifyDataSetChanged")
     public void calcTotal() {
         int num = 0;
@@ -118,6 +118,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
                 total += cost;
             }
         }
+        //check if user choose any item to check to display proper message
         if (cartList.isEmpty()) {
             setDeselectAll();
         } else if (num == 0) {
@@ -129,6 +130,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
         setAmount(total);
         notifyDataSetChanged();
     }
+
+    //initial all element exist in the cart list
     static class cartViewHolder extends RecyclerView.ViewHolder{
         RelativeLayout cartCard;
         CheckBox buyCheckBox;
@@ -138,6 +141,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
         TextView cartPrice;
         @SuppressLint("StaticFieldLeak")
         static View view;
+
         cartViewHolder(View itemView)
         {
             super(itemView);

@@ -35,6 +35,7 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
         this.list = list;
     }
 
+    //create holder to store all element exist in recycler list
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,6 +48,7 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
         return new BookDisplayAdapter.ViewHolder(photoView);
     }
 
+    //set up element in recycler list
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Book book = list.get(position);

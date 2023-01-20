@@ -59,20 +59,8 @@ public class HomePage extends AppCompatActivity {
         name = (String) i.getStringExtra("name");
         System.out.println("From homepage" + name);
         welcomeText.setText(String.format("Hello %s", name));
+
         //button image to show the user's shopping cart
-        searchView = (SearchView) findViewById(R.id.searchView);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
         showCart = (ImageButton) findViewById(R.id.shoppingCart);
         showCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,14 +82,7 @@ public class HomePage extends AppCompatActivity {
                 startActivity(i);
             }
         });
-//                addButton = (Button) findViewById(R.id.addButton);
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(HomePage.this, AddBook.class);
-//                startActivity(i);
-//            }
-//        });
+
         //call function to generate our adapter view
         generateRecyclerView();
         generateListView();
@@ -124,6 +105,7 @@ public class HomePage extends AppCompatActivity {
         listBook.setAdapter(listAdapter);
     }
 
+    //get user info from firestore and display in user info layout
     public void getUserInfo() {
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
