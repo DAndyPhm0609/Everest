@@ -13,11 +13,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 public class BookDetail extends AppCompatActivity {
-    TextView name, detail, rate;
+    TextView name, detail, rate, author;
     ImageButton addCart;
     ImageView cover;
     @Override
@@ -29,6 +30,9 @@ public class BookDetail extends AppCompatActivity {
         int position = (int) intent.getExtras().get("index");
         name = findViewById(R.id.detailName);
         name.setText(BookArrayList.get(position).getName());
+
+        author = findViewById(R.id.detailAuthor);
+        author.setText(BookArrayList.get(position).getAuthor());
 
         detail = findViewById(R.id.description);
         detail.setText(BookArrayList.get(position).getDes());
@@ -44,6 +48,7 @@ public class BookDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cartList.add(BookArrayList.get(position));
+                Toast.makeText(BookDetail.this,"Added to cart", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -28,6 +28,9 @@ public class Delivery extends AppCompatActivity {
         total = findViewById(R.id.delTotal);
         Intent intent = getIntent();
         cost = (String) intent.getExtras().get("total");
+        name.setText(HomePage.userName);
+        address.setText(HomePage.userAddress);
+        phone.setText(HomePage.userPhone);
         total.setText(cost);
         confirm.setOnClickListener(view -> {
             Intent intent1 = new Intent(Delivery.this, SuccessDeli.class);

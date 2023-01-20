@@ -1,5 +1,8 @@
 package com.example.everest;
 
+import static com.example.everest.HomePage.BookArrayList;
+import static com.example.everest.HomePage.cartList;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -70,6 +73,13 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
                     intent.putExtra("index", index);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
+                }
+            });
+            viewHolder.addCart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cartList.add(BookArrayList.get(index));
+                    Toast.makeText(context,"Added to cart", Toast.LENGTH_SHORT).show();
                 }
             });
         }

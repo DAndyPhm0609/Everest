@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,9 +32,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserInfo extends AppCompatActivity {
-    ImageButton backButton;
     TextView name,address,phone;
-
+//    static String userName, userAddress, userPhone;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String Uid;
@@ -43,8 +43,7 @@ public class UserInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
-
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         name = (TextView)findViewById(R.id.nameView);
         address = (TextView) findViewById(R.id.addressView);
         phone = (TextView) findViewById(R.id.phoneView);
@@ -62,28 +61,38 @@ public class UserInfo extends AppCompatActivity {
                 finish();
             }
         });
+        name.setText(HomePage.userName);
+        address.setText(HomePage.userAddress);
+        phone.setText(HomePage.userPhone);
 
-        backButton = (ImageButton) findViewById(R.id.backBtn);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+//        fStore.collection("users").get()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        for(QueryDocumentSnapshot document:task.getResult()){
+//                            Log.d(TAG, document.getId() + "=>" + document.getData());
+//                            userName = getIntent().getStringExtra("name");
+//                            name.setText(userName);
+//                            userAddress = getIntent().getStringExtra("address");
+//                            address.setText(userAddress);
+//                            userPhone = getIntent().getStringExtra("phone");
+//                            phone.setText(userPhone);
+//                        }
+//                    }else{
+//                        Log.w(TAG,"Error getting User", task.getException());
+//                    }
+//
+//                });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
                 finish();
-            }
-        });
-        fStore.collection("users").get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for(QueryDocumentSnapshot document:task.getResult()){
-                            Log.d(TAG, document.getId() + "=>" + document.getData());
-                            name.setText(getIntent().getStringExtra("name"));
-                            address.setText(getIntent().getStringExtra("address"));
-                            phone.setText(getIntent().getStringExtra("phone"));
-                        }
-                    }else{
-                        Log.w(TAG,"Error getting User", task.getException());
-                    }
+                return true;
 
-                });
-
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
