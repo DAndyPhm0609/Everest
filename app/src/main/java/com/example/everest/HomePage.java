@@ -5,22 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
 import android.widget.ImageButton;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.everest.databinding.ActivityHomePageBinding;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +49,6 @@ public class HomePage extends AppCompatActivity {
         userName = (String) i.getStringExtra("name");
         System.out.println("From homepage" + userName);
         welcomeText.setText(String.format("Hello %s", userName));
-
         //button image to show the user's shopping cart
         showCart = (ImageButton) findViewById(R.id.shoppingCart);
         showCart.setOnClickListener(new View.OnClickListener() {
@@ -106,4 +97,5 @@ public class HomePage extends AppCompatActivity {
         listAdapter = new ListViewAdapter(getApplication(), BookArrayList);
         listBook.setAdapter(listAdapter);
     }
+
 }

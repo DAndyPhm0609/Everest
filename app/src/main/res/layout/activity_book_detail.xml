@@ -15,66 +15,76 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/detailCover"
                 android:layout_width="139dp"
                 android:layout_height="217dp"
-                android:layout_gravity="center"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/shadow"
                 android:elevation="5dp"
                 app:srcCompat="@drawable/hp_cover" />
 
             <TextView
-                android:id="@+id/harry_porter"
+                android:id="@+id/detailName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="165dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:text="Harry Porter" />
+                android:textSize="20sp" />
 
-            <ImageButton
-                android:id="@+id/shareButton"
-                android:layout_width="35dp"
-                android:layout_height="27dp"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="150dp"
-                app:srcCompat="@drawable/share_icon" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/addCart"
-                android:layout_width="35dp"
-                android:layout_height="27dp"
-                android:layout_marginStart="220dp"
-                android:layout_marginTop="-27dp"
-                android:background="@android:color/transparent"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/_619489_add_and_cart_ecommerce_shopping_icon" />
+                <ImageView
+                    android:id="@+id/detailStar"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+                    app:layout_constraintTop_toBottomOf="@+id/cardAuthorName"
+                    app:srcCompat="@drawable/star_icon" />
+
+                <TextView
+                    android:id="@+id/detailRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="5.0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+                    app:layout_constraintTop_toBottomOf="@+id/cardAuthorName" />
+
+                <ImageButton
+                    android:id="@+id/addCart"
+                    android:layout_width="35dp"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/_619489_add_and_cart_ecommerce_shopping_icon" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_gravity="start"
                 android:layout_marginStart="30dp"
-                android:text="Detail: lorem ipsum"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_light"
                 android:textColor="@color/black"
-                android:fontFamily="@font/poppins_light"/>
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/review"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
-                android:text="Summary: lorem ipsum"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_light"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
