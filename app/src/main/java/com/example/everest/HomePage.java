@@ -34,8 +34,6 @@ public class HomePage extends AppCompatActivity {
     RecyclerView recyclerBook, listBook;
     private static final String TAG = "HomePage";
     private TextView welcomeText;
-
-    Button addButton;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
     private BookDisplayAdapter bookAdapter;
     private ImageButton showCart;
