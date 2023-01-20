@@ -56,8 +56,7 @@ public class UserInfo extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(UserInfo.this, MainPage.class);
-                startActivity(i);
+                setResult(RESULT_OK);
                 finish();
             }
         });

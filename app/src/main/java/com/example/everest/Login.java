@@ -95,6 +95,7 @@ public class Login extends AppCompatActivity {
                             }
                         });
                         createBookList();
+                        finish();
                     } else {
                         Toast.makeText(Login.this, "Registration Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

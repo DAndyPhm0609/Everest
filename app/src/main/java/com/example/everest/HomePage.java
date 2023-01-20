@@ -90,7 +90,7 @@ public class HomePage extends AppCompatActivity {
                 i.putExtra("name", getIntent().getStringExtra("name"));
                 i.putExtra("address", getIntent().getStringExtra("address"));
                 i.putExtra("phone", getIntent().getStringExtra("phone"));
-                startActivity(i);
+                startActivityForResult(i, 300);
             }
         });
 //                addButton = (Button) findViewById(R.id.addButton);
@@ -143,4 +143,15 @@ public class HomePage extends AppCompatActivity {
                 });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == 300) {
+            if (resultCode == RESULT_OK) {
+                recyclerList = new ArrayList<>();
+                BookArrayList = new ArrayList<>();
+                finish();
+            }
+        }
+    }
 }
