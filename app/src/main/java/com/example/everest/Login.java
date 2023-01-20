@@ -1,5 +1,7 @@
 package com.example.everest;
 
+import static com.example.everest.HomePage.recyclerList;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -90,6 +92,7 @@ public class Login extends AppCompatActivity {
                                 }
                             }
                         });
+                        createBookList();
                     } else {
                         Toast.makeText(Login.this, "Registration Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -111,4 +114,26 @@ public class Login extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    public void createBookList() {
+        fireStore.collection("books")
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
+
+                        for (DocumentSnapshot documentSnapshot : snapshotList) {
+                            Book book = documentSnapshot.toObject(Book.class);
+
+                            String name = book.getName();
+                            String author = book.getAuthor();
+                            String price = book.getPrice();
+                            String des = book.getDes();
+                            Double rating = book.getRating();
+                            String imgURL = book.getUrl();
+                            recyclerList.add(new Book(name, author, price, rating, des, imgURL));
+                        }
+                    }
+                });
+    }
 }
+
