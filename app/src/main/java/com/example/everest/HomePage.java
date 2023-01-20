@@ -73,8 +73,12 @@ public class HomePage extends AppCompatActivity {
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent i = new Intent(HomePage.this,);
-                Toast.makeText(HomePage.this, "user info", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(HomePage.this, UserInfo.class);
+                i.putExtra("name", getIntent().getStringExtra("name"));
+                i.putExtra("address", getIntent().getStringExtra("address"));
+                i.putExtra("phone", getIntent().getStringExtra("phone"));
+                startActivity(i);
+//                Toast.makeText(HomePage.this, "user info", Toast.LENGTH_SHORT).show();
             }
         });
 //                addButton = (Button) findViewById(R.id.addButton);

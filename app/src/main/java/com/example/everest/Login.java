@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -71,21 +72,21 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        fireStore.collection("users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            @Override
-                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
-
-                                for (DocumentSnapshot documentSnapshot : snapshotList) {
+                        fireStore.collection("users").get().addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()) {
+                                for (DocumentSnapshot documentSnapshot : task1.getResult()) {
                                     User user = documentSnapshot.toObject(User.class);
 
                                     String email = user.getEmail();
-                                    if(emailLogin.equals(email)){
+                                    if (emailLogin.equals(email)) {
                                         userName = user.getName();
-                                        System.out.println(userName);
+
+                                        Log.d("TAG", "USERNAME HERE, TRASH: " + userName);
 
                                         Intent i = new Intent(Login.this, HomePage.class);
                                         i.putExtra("name", userName);
+                                        i.putExtra("address", user.address);
+                                        i.putExtra("phone", user.phone);
                                         startActivity(i);
                                         break;
                                     }
