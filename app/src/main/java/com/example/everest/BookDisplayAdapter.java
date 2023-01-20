@@ -43,10 +43,7 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
         LayoutInflater inflater
                 = LayoutInflater.from(context);
         // Inflate the layout
-        View photoView
-                = inflater
-                .inflate(R.layout.item_column,
-                        parent, false);
+        View photoView = inflater.inflate(R.layout.item_column, parent, false);
         return new BookDisplayAdapter.ViewHolder(photoView);
     }
 
