@@ -16,21 +16,21 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.ViewHolder> {
-    private Context context;
-    private ArrayList<BookData> list;
+    Context context;
+    ArrayList<Book> list;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView bookCover;
-        private TextView name;
-
+        ImageView bookCover;
+        TextView name;
+        View view;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             bookCover= itemView.findViewById(R.id.bookCover);
             name = itemView.findViewById(R.id.bookName);
+            view = itemView;
         }
     }
-
-    public BookDisplayAdapter(Context context, ArrayList<BookData> list) {
+    public BookDisplayAdapter(Context context, ArrayList<Book> list) {
         this.context = context;
         this.list = list;
     }
@@ -38,21 +38,33 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<BookDisplayAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View book = inflater.inflate(R.layout.item_column, parent, false);
-        ViewHolder viewHolder = new ViewHolder(book);
-        return viewHolder;
+        Context context
+                = parent.getContext();
+        LayoutInflater inflater
+                = LayoutInflater.from(context);
+        // Inflate the layout
+        View photoView
+                = inflater
+                .inflate(R.layout.item_column,
+                        parent, false);
+        return new BookDisplayAdapter.ViewHolder(photoView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BookData book = list.get(position);
-        Picasso.get().load(book.getBookCover()).into(holder.bookCover);
-        holder.name.setText(book.getBookName());
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        Book book = list.get(position);
+        Picasso.get().load(book.getUrl()).into(holder.bookCover);
+        holder.name.setText(book.getName());
     }
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+    @Override
+    public void onAttachedToRecyclerView(
+            @NonNull RecyclerView recyclerView)
+    {
+        super.onAttachedToRecyclerView(recyclerView);
     }
 }

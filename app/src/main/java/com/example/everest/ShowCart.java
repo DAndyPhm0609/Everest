@@ -20,7 +20,6 @@ public class ShowCart extends AppCompatActivity {
     static CheckBox selectAll;
     static TextView amount;
     Button checkout;
-    CartListAdapter.ClickListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +46,8 @@ public class ShowCart extends AppCompatActivity {
         recyclerView = findViewById(R.id.cartList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(ShowCart.this));
-        adapter = new CartListAdapter(cartList, getApplication(),listener);
+        adapter = new CartListAdapter(cartList, getApplication());
         recyclerView.setAdapter(adapter);
-        listener = new CartListAdapter.ClickListener() {
-        };
         adapter.calcTotal();
     }
 
@@ -87,9 +84,9 @@ public class ShowCart extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // todo: goto back activity from here
-                Intent intent = new Intent(ShowCart.this, HomePage.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+//                Intent intent = new Intent(ShowCart.this, HomePage.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
                 finish();
                 return true;
 

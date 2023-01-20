@@ -1,88 +1,120 @@
 package com.example.everest;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-//public class ListViewAdapter extends ArrayAdapter<Book> {
-//
-//    public ListViewAdapter(Context context, ArrayList<Book> list) {
-//        super(context, R.layout.item_list, list);
-//
-//    }
 
-class ListViewAdapter extends BaseAdapter {
-    private Context context;
-    private int layout;
-    ArrayList<BookCardDetail> bookList;
+class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolder> {
+    Context context;
+    ArrayList<Book> list;
 
-    public ListViewAdapter(Context context, int layout, ArrayList<BookCardDetail> bookList){
+    public ListViewAdapter(Context context, ArrayList<Book> list){
         this.context = context;
-        this.layout = layout;
-        this.bookList = bookList;
+        this.list = list;
     }
-
-
-    ListViewAdapter(ArrayList<BookCardDetail> bookList) {
-        this.bookList = bookList;
-    }
-
-    @Override
-    public int getCount() {
-        return bookList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return bookList.get(position);
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
-
-
 
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public ListViewAdapter.listViewHolder
+    onCreateViewHolder(ViewGroup parent,
+                       int viewType)
+    {
+        Context context
+                = parent.getContext();
+        LayoutInflater inflater
+                = LayoutInflater.from(context);
+        // Inflate the layout
+        View photoView
+                = inflater
+                .inflate(R.layout.item_list,
+                        parent, false);
+        return new ListViewAdapter.listViewHolder(photoView);
+    }
 
-        View viewRequest;
-        if (convertView == null) {
-            viewRequest = View.inflate(parent.getContext(), R.layout.item_list, null);
-        } else viewRequest = convertView;
+    @SuppressLint("SetTextI18n")
+    public void
+    onBindViewHolder(final ListViewAdapter.listViewHolder viewHolder,
+                     final int position)
+    {
+        if (list.get(position) != null) {
+            final int index = viewHolder.getAdapterPosition();
+            viewHolder.bookName
+                    .setText(list.get(position).name);
+            viewHolder.bookAuthor
+                    .setText(list.get(position).author);
+            viewHolder.bookPrice
+                    .setText("$" + list.get(position).price);
+            viewHolder.bookRating
+                    .setText(String.valueOf(list.get(position).rating));
+            Picasso.get().load(list.get(position).getUrl()).into(viewHolder.bookCover);
+            viewHolder.itemList.setOnClickListener(view -> Toast.makeText(view.getContext(), String.valueOf(index), Toast.LENGTH_SHORT).show());
+        }
+    }
+    @Override
+    public int getItemCount()
+    {
+        if (list == null) {
+            return 0;
+        }
+        return list.size();
+    }
 
-        BookCardDetail book = (BookCardDetail) getItem(position);
+    @Override
+    public void onAttachedToRecyclerView(
+            @NonNull RecyclerView recyclerView)
+    {
+        super.onAttachedToRecyclerView(recyclerView);
+    }
 
-        ImageView star = convertView.findViewById(R.id.cardStar);
-        TextView name = convertView.findViewById(R.id.cardBookName);
-        TextView author = convertView.findViewById(R.id.cardAuthorName);
-        TextView rating = convertView.findViewById(R.id.cardBookRating);
-        ImageView bookCover = convertView.findViewById(R.id.cardImageUrl);
-        TextView price = convertView.findViewById(R.id.cardBookPrice);
-        ImageButton wishList = convertView.findViewById(R.id.cardWishList);
-
-
-        Picasso.get().load("https://uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.png").into(star);
-        Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-rR5-UUarzgaOnGCMMC8OV06K2zwdd_ZJcX60BP0&s").into(wishList);
-        Picasso.get().load(book.url).into(bookCover);
-        name.setText(book.name);
-        author.setText(book.author);
-        rating.setText(book.rating.toString());
-        price.setText(book.price);
-
-        return viewRequest;
+     static class listViewHolder extends RecyclerView.ViewHolder{
+        ImageView bookCover;
+        TextView bookName;
+        TextView bookAuthor;
+        TextView bookPrice;
+        TextView bookRating;
+        ImageButton addCart;
+        RelativeLayout itemList;
+        View view;
+        listViewHolder(View itemView)
+        {
+            super(itemView);
+            bookCover
+                    = itemView
+                    .findViewById(R.id.cardImageUrl);
+            bookName
+                    = itemView
+                    .findViewById(R.id.cardBookName);
+            bookAuthor
+                    = itemView
+                    .findViewById(R.id.cardAuthorName);
+            bookPrice
+                    = itemView
+                    .findViewById(R.id.cardBookPrice);
+            bookRating
+                    = itemView
+                    .findViewById(R.id.cardBookRating);
+            addCart
+                    = itemView.findViewById(R.id.addCartButton);
+            view  = itemView;
+            itemList
+                    = itemView
+                    .findViewById(R.id.itemList);
+        }
     }
 }

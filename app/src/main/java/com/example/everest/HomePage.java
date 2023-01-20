@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.everest.databinding.ActivityHomePageBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,52 +28,37 @@ import java.util.List;
 
 public class HomePage extends AppCompatActivity {
 
-    private ArrayList<BookData> list;
+    public static ArrayList<Book> recyclerList = new ArrayList<>();
     public static List<Book> cartList = new ArrayList<>();
-    private RecyclerView recyclerBook;
+    public ArrayList<Book> BookArrayList = new ArrayList<>();
+    RecyclerView recyclerBook, listBook;
     private static final String TAG = "HomePage";
-    private TextView welcomeView;
-
-    Button addButton;
+    public TextView welcomeText;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
-    private BookDisplayAdapter bookAdapter;
-    private ImageButton showCart;
-    private ImageButton info;
-//    TextView welcomeView;
-
-    public ArrayList<BookData> recyclerList = new ArrayList<>();
-    public ArrayList<BookCardDetail> bookCardDetailArrayList = new ArrayList<>();
+    public BookDisplayAdapter bookAdapter;
+    public ImageButton showCart;
+    public ImageButton info;
 
     ListViewAdapter listAdapter;
-    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-
-        createNewList();
-        listAdapter = new ListViewAdapter(bookCardDetailArrayList);
-        listView = findViewById(R.id.listView);
-        listView.setAdapter(listAdapter);
-
-        createBookList();
-        recyclerBook = findViewById(R.id.recyclerView);
-        bookAdapter = new BookDisplayAdapter(this, recyclerList);
-
-
-        welcomeView = (TextView) findViewById(R.id.welcomeText);
+        //Text view to welcome the user
+        welcomeText = (TextView) findViewById(R.id.welcomeText);
         String userName;
 
+        //get intent from login to get user's name
         Intent i = getIntent();
+
+        //get username from intent to display in welcome text
         userName = (String) i.getStringExtra("name");
         System.out.println("From homepage" + userName);
-        welcomeView.setText(String.format("Hello %s", userName));
+        welcomeText.setText(String.format("Hello %s", userName));
 
-        recyclerBook.setAdapter(bookAdapter);
-        recyclerBook.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
+        //button image to show the user's shopping cart
         showCart = (ImageButton) findViewById(R.id.shoppingCart);
         showCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +68,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+        //Image button to access our user's profile
         info = (ImageButton) findViewById(R.id.cusInfo);
         info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +81,7 @@ public class HomePage extends AppCompatActivity {
 //                Toast.makeText(HomePage.this, "user info", Toast.LENGTH_SHORT).show();
             }
         });
-        //        addButton = (Button) findViewById(R.id.addButton);
+//                addButton = (Button) findViewById(R.id.addButton);
 //        addButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -102,55 +89,25 @@ public class HomePage extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
+        //call function to generate our adapter view
+        generateRecyclerView();
+        generateListView();
     }
 
-
-    public void createBookList() {
-        fireStore.collection("books")
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
-
-                        for (DocumentSnapshot documentSnapshot : snapshotList) {
-                            Book book = documentSnapshot.toObject(Book.class);
-
-                            String name = book.getName();
-                            String imgURL = book.getUrl();
-
-                            recyclerList.add(new BookData(name, imgURL));
-                        }
-                    }
-                });
+    //function to use adapter to create our recycler view
+    private void generateRecyclerView() {
+        recyclerBook = findViewById(R.id.recyclerView);
+        recyclerBook.setHasFixedSize(true);
+        recyclerBook.setLayoutManager(new LinearLayoutManager(HomePage.this, LinearLayoutManager.HORIZONTAL, false));
+        bookAdapter = new BookDisplayAdapter(getApplication(), recyclerList);
+        recyclerBook.setAdapter(bookAdapter);
     }
-
-    public void createNewList() {
-        fireStore.collection("books")
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
-
-                        for (DocumentSnapshot documentSnapshot : snapshotList) {
-                            BookCardDetail book = documentSnapshot.toObject(BookCardDetail.class);
-
-                            String name = book.getName();
-                            String author = book.getAuthor();
-                            String price = book.getPrice();
-                            Double rating = book.getRating();
-                            String imgURL = book.getUrl();
-                            String star = "https://uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.png";
-                            String wishList = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-rR5-UUarzgaOnGCMMC8OV06K2zwdd_ZJcX60BP0&s";
-
-                            System.out.println(name);
-                            System.out.println(author);
-                            System.out.println(price);
-                            System.out.println(rating);
-                            System.out.println(imgURL);
-
-                            bookCardDetailArrayList.add(new BookCardDetail(name, author, price, rating, star, imgURL, wishList));
-                        }
-                    }
-                });
+    //function to create the list view below the recycler view
+    private void generateListView() {
+        listBook = findViewById(R.id.listView);
+        listBook.setHasFixedSize(true);
+        listBook.setLayoutManager(new LinearLayoutManager(HomePage.this));
+        listAdapter = new ListViewAdapter(getApplication(), BookArrayList);
+        listBook.setAdapter(listAdapter);
     }
 }
