@@ -27,7 +27,6 @@ public class MainPage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainPage.this, Login.class);
                 startActivity(i);
-                finish();
             }
         });
 
@@ -37,7 +36,6 @@ public class MainPage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainPage.this, SignUp.class);
                 startActivity(i);
-                finish();
             }
         });
     }

@@ -96,6 +96,7 @@ public class SignUp extends AppCompatActivity {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         });
                     } else {

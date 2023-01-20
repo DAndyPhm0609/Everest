@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 public class BookDetail extends AppCompatActivity {
-    TextView name, detail, rate, author;
+    TextView name, detail, rate, author, price;
     ImageButton addCart;
     ImageView cover;
     @Override
@@ -35,6 +35,9 @@ public class BookDetail extends AppCompatActivity {
 
         author = findViewById(R.id.detailAuthor);
         author.setText(BookArrayList.get(position).getAuthor());
+
+        price = findViewById(R.id.detailPrice);
+        price.setText("Price: $" + BookArrayList.get(position).getPrice());
 
         detail = findViewById(R.id.description);
         detail.setText(BookArrayList.get(position).getDes());
