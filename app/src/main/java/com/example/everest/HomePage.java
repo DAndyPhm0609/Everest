@@ -33,7 +33,7 @@ public class HomePage extends AppCompatActivity {
     public ArrayList<Book> BookArrayList = new ArrayList<>();
     RecyclerView recyclerBook, listBook;
     private static final String TAG = "HomePage";
-    private TextView welcomeView;
+    private TextView welcomeText;
 
     Button addButton;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
@@ -48,14 +48,19 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        welcomeView = (TextView) findViewById(R.id.welcomeText);
+        //Text view to welcome the user
+        welcomeText = (TextView) findViewById(R.id.welcomeText);
         String userName;
 
+        //get intent from login to get user's name
         Intent i = getIntent();
+
+        //get username from intent to display in welcome text
         userName = (String) i.getStringExtra("name");
         System.out.println("From homepage" + userName);
-        welcomeView.setText(String.format("Hello %s", userName));
+        welcomeText.setText(String.format("Hello %s", userName));
 
+        //button image to show the user's shopping cart
         showCart = (ImageButton) findViewById(R.id.shoppingCart);
         showCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+        //Image button to access our user's profile
         info = (ImageButton) findViewById(R.id.cusInfo);
         info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,10 +87,12 @@ public class HomePage extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
+        //call function to generate our adapter view
         generateRecyclerView();
         generateListView();
     }
 
+    //function to use adapter to create our recycler view
     private void generateRecyclerView() {
         recyclerBook = findViewById(R.id.recyclerView);
         recyclerBook.setHasFixedSize(true);
@@ -92,7 +100,7 @@ public class HomePage extends AppCompatActivity {
         bookAdapter = new BookDisplayAdapter(getApplication(), recyclerList);
         recyclerBook.setAdapter(bookAdapter);
     }
-
+    //function to create the list view below the recycler view
     private void generateListView() {
         listBook = findViewById(R.id.listView);
         listBook.setHasFixedSize(true);
