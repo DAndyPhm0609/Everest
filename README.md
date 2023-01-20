@@ -1,7 +1,7 @@
 # Everest
 
 Team contribution:
-Pham Hoang Thien An: 
+                                 Pham Hoang Thien An: 
 
 In charge of building and implementing the Firestore firebase into the project.   
 
@@ -15,7 +15,7 @@ Creating the adapter for viewing the list of book data in homepage.
 
  
 
-Nguyen Minh Duy Uyen: 
+                           Nguyen Minh Duy Uyen: 
 
 Building the order function: 
 
@@ -33,7 +33,7 @@ Add Background to Login, Signup
 
 Decorate Homepage 
 
-Park Anh Kiet:  
+                     Park Anh Kiet:  
 
 In charge of building main page, and save data user to Firestore. 
 
