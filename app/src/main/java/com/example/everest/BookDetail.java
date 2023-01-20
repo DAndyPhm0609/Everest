@@ -35,7 +35,7 @@ public class BookDetail extends AppCompatActivity {
         author.setText(BookArrayList.get(position).getAuthor());
 
         price = findViewById(R.id.detailPrice);
-        price.setText(BookArrayList.get(position).getPrice());
+        price.setText("Price: $" + BookArrayList.get(position).getPrice());
 
         detail = findViewById(R.id.description);
         detail.setText(BookArrayList.get(position).getDes());
