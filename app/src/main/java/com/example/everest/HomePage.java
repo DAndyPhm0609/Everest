@@ -12,15 +12,10 @@ import android.view.View;
 import android.widget.Button;
 
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.everest.databinding.ActivityHomePageBinding;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +29,14 @@ public class HomePage extends AppCompatActivity {
     RecyclerView recyclerBook, listBook;
     private static final String TAG = "HomePage";
     public TextView welcomeText;
-    FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
+
     public BookDisplayAdapter bookAdapter;
     public ImageButton showCart;
     public ImageButton info;
+    private TextView welcomeView;
+    private SearchView searchView;
+
+    Button addButton;
 
     ListViewAdapter listAdapter;
 
@@ -59,6 +58,19 @@ public class HomePage extends AppCompatActivity {
         welcomeText.setText(String.format("Hello %s", userName));
 
         //button image to show the user's shopping cart
+        searchView = (SearchView) findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
         showCart = (ImageButton) findViewById(R.id.shoppingCart);
         showCart.setOnClickListener(new View.OnClickListener() {
             @Override
