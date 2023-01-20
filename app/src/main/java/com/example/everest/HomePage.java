@@ -33,11 +33,11 @@ public class HomePage extends AppCompatActivity {
     public ArrayList<Book> BookArrayList = new ArrayList<>();
     RecyclerView recyclerBook, listBook;
     private static final String TAG = "HomePage";
-    private TextView welcomeText;
+    public TextView welcomeText;
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
-    private BookDisplayAdapter bookAdapter;
-    private ImageButton showCart;
-    private ImageButton info;
+    public BookDisplayAdapter bookAdapter;
+    public ImageButton showCart;
+    public ImageButton info;
 
     ListViewAdapter listAdapter;
 
