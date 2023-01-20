@@ -1,7 +1,6 @@
 # Everest
 
-Team contribution:
-                                 Pham Hoang Thien An: 
+                             Pham Hoang Thien An: 
 
 In charge of building and implementing the Firestore firebase into the project.   
 
@@ -12,6 +11,8 @@ Assist in saving the user data to firestore when user sign up for an account.
 Creating the adapter for viewing the list of book data in homepage.  
 
  Assist in editing the homepage layout, decorating the homepage.
+ 
+ Edit book detail view, add function into it.
 
  
 
@@ -40,7 +41,11 @@ In charge of building main page, and save data user to Firestore.
 Sign in, sign up and sign out function. 
 
 Fetch data from Firestore documents and display user information 
-
+                    
+                    Mai Chieu Thuy
+Create adapter for homepage's horizontal recycler view.
+In charge of creating the layout of the homepage.
+Create the book detail views.
  
 
 Functionality: Our app is a mobile online bookstore for android devices. First timer user can sign up an account to access our store. An account will require the user to insert their name, email, password, phone number, and address.
