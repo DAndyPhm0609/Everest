@@ -38,11 +38,6 @@ public class Delivery extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                // todo: goto back activity from here
-                Intent intent = new Intent(Delivery.this, ShowCart.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("past total", cost);
-                startActivity(intent);
                 finish();
                 return true;
             default:

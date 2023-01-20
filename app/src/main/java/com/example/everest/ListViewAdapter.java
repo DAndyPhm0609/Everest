@@ -2,6 +2,7 @@ package com.example.everest;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +21,13 @@ import java.util.ArrayList;
 
 
 class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolder> {
-    Context context;
+    static Context context;
     ArrayList<Book> list;
 
     public ListViewAdapter(Context context, ArrayList<Book> list){
         this.context = context;
         this.list = list;
     }
-
 
     @NonNull
     @Override
@@ -52,8 +52,8 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
     onBindViewHolder(final ListViewAdapter.listViewHolder viewHolder,
                      final int position)
     {
+        final int index = viewHolder.getAdapterPosition();
         if (list.get(position) != null) {
-            final int index = viewHolder.getAdapterPosition();
             viewHolder.bookName
                     .setText(list.get(position).name);
             viewHolder.bookAuthor
@@ -63,7 +63,15 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
             viewHolder.bookRating
                     .setText(String.valueOf(list.get(position).rating));
             Picasso.get().load(list.get(position).getUrl()).into(viewHolder.bookCover);
-            viewHolder.itemList.setOnClickListener(view -> Toast.makeText(view.getContext(), String.valueOf(index), Toast.LENGTH_SHORT).show());
+            viewHolder.itemList.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, BookDetail.class);
+                    intent.putExtra("index", index);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
     @Override
@@ -74,7 +82,6 @@ class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.listViewHolde
         }
         return list.size();
     }
-
     @Override
     public void onAttachedToRecyclerView(
             @NonNull RecyclerView recyclerView)

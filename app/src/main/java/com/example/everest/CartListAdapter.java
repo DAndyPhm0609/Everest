@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartViewHolder> {
@@ -57,6 +60,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.cartVi
                      final int position)
     {
         final int index = viewHolder.getAdapterPosition();
+        Picasso.get().load(list.get(position).getUrl()).into(viewHolder.cartPhoto);
         viewHolder.cartName
                 .setText(list.get(position).name);
         viewHolder.cartAuthor
