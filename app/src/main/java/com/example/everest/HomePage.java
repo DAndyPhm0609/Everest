@@ -31,7 +31,7 @@ public class HomePage extends AppCompatActivity {
     public static ArrayList<Book> recyclerList = new ArrayList<>();
     public static List<Book> cartList = new ArrayList<>();
     public ArrayList<Book> BookArrayList = new ArrayList<>();
-    private RecyclerView recyclerBook;
+    RecyclerView recyclerBook, listBook;
     private static final String TAG = "HomePage";
     private TextView welcomeView;
 
@@ -41,9 +41,7 @@ public class HomePage extends AppCompatActivity {
     private ImageButton showCart;
     private ImageButton info;
 
-
     ListViewAdapter listAdapter;
-    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +94,11 @@ public class HomePage extends AppCompatActivity {
     }
 
     private void generateListView() {
-        listAdapter = new ListViewAdapter(HomePage.this, BookArrayList);
-        listView = findViewById(R.id.listView);
-        listView.setAdapter(listAdapter);
+        listBook = findViewById(R.id.listView);
+        listBook.setHasFixedSize(true);
+        listBook.setLayoutManager(new LinearLayoutManager(HomePage.this));
+        listAdapter = new ListViewAdapter(getApplication(), BookArrayList);
+        listBook.setAdapter(listAdapter);
     }
     public void createBookList() {
         fireStore.collection("books")
@@ -121,8 +121,8 @@ public class HomePage extends AppCompatActivity {
                             System.out.println(price);
                             System.out.println(rating);
                             System.out.println(imgURL);
-
                             recyclerList.add(new Book(name, author, price, rating, des, imgURL));
+                            BookArrayList.add(new Book(name, author, price, rating, des, imgURL));
                         }
                     }
                 });

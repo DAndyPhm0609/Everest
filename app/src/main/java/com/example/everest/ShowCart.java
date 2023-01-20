@@ -20,7 +20,6 @@ public class ShowCart extends AppCompatActivity {
     static CheckBox selectAll;
     static TextView amount;
     Button checkout;
-    CartListAdapter.ClickListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +46,8 @@ public class ShowCart extends AppCompatActivity {
         recyclerView = findViewById(R.id.cartList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(ShowCart.this));
-        adapter = new CartListAdapter(cartList, getApplication(),listener);
+        adapter = new CartListAdapter(cartList, getApplication());
         recyclerView.setAdapter(adapter);
-        listener = new CartListAdapter.ClickListener() {
-        };
         adapter.calcTotal();
     }
 

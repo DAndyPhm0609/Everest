@@ -1,86 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemList"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="150dp">
 
-    <ImageView
-        android:id="@+id/cardImageUrl"
-        android:layout_width="98dp"
-        android:layout_height="111dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hp_cover" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/cardBookName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="16dp"
-        android:text="Harry Porter"
-        android:textColor="@color/black"
-        android:fontFamily="@font/poppins_semibold"
-        app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/cardImageUrl"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/hp_cover" />
 
-    <TextView
-        android:id="@+id/cardAuthorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/poppins_light"
-        android:text="J.K.Rowling"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
-        app:layout_constraintTop_toBottomOf="@+id/cardBookName" />
+        <LinearLayout
+            android:layout_width="193dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/cardStar"
-        android:layout_width="15dp"
-        android:layout_height="12dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="13dp"
-        app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
-        app:layout_constraintTop_toBottomOf="@+id/cardAuthorName"
-        app:srcCompat="@drawable/star_icon" />
+            <TextView
+                android:id="@+id/cardBookName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Harry Porter"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/cardBookRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:text="5.0"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
-        app:layout_constraintTop_toBottomOf="@+id/cardAuthorName" />
+            <TextView
+                android:id="@+id/cardAuthorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="J.K.Rowling"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+                app:layout_constraintTop_toBottomOf="@+id/cardBookName" />
 
-    <TextView
-        android:id="@+id/cardBookPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="40dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="$30.00"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/cardWishList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="42dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wishlist_icon" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/cardStar"
+                    android:layout_width="15dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="3dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+                    app:layout_constraintTop_toBottomOf="@+id/cardAuthorName"
+                    app:srcCompat="@drawable/star_icon" />
+
+                <TextView
+                    android:id="@+id/cardBookRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="5.0"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/cardImageUrl"
+                    app:layout_constraintTop_toBottomOf="@+id/cardAuthorName" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/addCartButton"
+                android:layout_width="35dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="42dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/_619489_add_and_cart_ecommerce_shopping_icon" />
+
+            <TextView
+                android:id="@+id/cardBookPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="$30.00"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

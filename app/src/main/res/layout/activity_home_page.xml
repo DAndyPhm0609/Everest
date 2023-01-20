@@ -17,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <ImageButton
@@ -35,8 +35,8 @@
                 android:id="@+id/welcomeText"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_marginTop="-29dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="-29dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text=""
                 android:textColor="@color/black" />
@@ -82,7 +82,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="238dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/searchView" />
@@ -90,50 +90,51 @@
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rbtnNew"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Newest"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@android:color/transparent"
                     android:fontFamily="@font/poppins_light"
 
-                    android:button="@android:color/transparent"
-                    android:textColor="@color/rbtn_text_selected"
-                    android:background="@drawable/rbtn_selector"/>
+                    android:gravity="center"
+                    android:text="Newest"
+                    android:textColor="@color/rbtn_text_selected" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Popular"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@android:color/transparent"
                     android:checked="true"
                     android:fontFamily="@font/poppins_light"
-                    android:button="@android:color/transparent"
-                    android:textColor="@color/rbtn_text_selected"
-                    android:background="@drawable/rbtn_selector"/>
+                    android:gravity="center"
+                    android:text="Popular"
+                    android:textColor="@color/rbtn_text_selected" />
 
                 <RadioButton
                     android:id="@+id/radioButton"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins_light"
                     android:gravity="center"
                     android:text="Wishlist"
-                    android:fontFamily="@font/poppins_light"
-                    android:button="@android:color/transparent"
-                    android:textColor="@color/rbtn_text_selected"
-                    android:background="@drawable/rbtn_selector"/>
+                    android:textColor="@color/rbtn_text_selected" />
             </RadioGroup>
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
 
         </LinearLayout>
     </ScrollView>
