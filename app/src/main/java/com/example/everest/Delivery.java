@@ -34,17 +34,28 @@ public class Delivery extends AppCompatActivity {
         total.setText(cost);
         confirm.setOnClickListener(view -> {
             Intent intent1 = new Intent(Delivery.this, SuccessDeli.class);
-            startActivity(intent1);
+            startActivityForResult(intent1, 200);
         });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                setResult(RESULT_OK);
                 finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == 200) {
+            if (resultCode == RESULT_OK) {
+                setResult(RESULT_OK);
+                finish();
+            }
         }
     }
 }

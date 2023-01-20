@@ -14,8 +14,7 @@ public class SuccessDeli extends AppCompatActivity {
         setContentView(R.layout.activity_success_deli);
         main = findViewById(R.id.backMain);
         main.setOnClickListener(view -> {
-            Intent intent = new Intent(SuccessDeli.this, HomePage.class);
-            startActivity(intent);
+            setResult(RESULT_OK);
             finish();
         });
     }

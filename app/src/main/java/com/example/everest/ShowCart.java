@@ -75,10 +75,12 @@ public class ShowCart extends AppCompatActivity {
             } else {
                 Intent intent = new Intent(ShowCart.this, Delivery.class);
                 intent.putExtra("total", amount.getText().toString());
-                startActivity(intent);
+                startActivityForResult(intent, 100);
             }
         });
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -89,6 +91,15 @@ public class ShowCart extends AppCompatActivity {
 
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+                finish();
+            }
         }
     }
 

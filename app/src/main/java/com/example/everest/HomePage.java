@@ -59,9 +59,6 @@ public class HomePage extends AppCompatActivity {
         name = (String) i.getStringExtra("name");
         System.out.println("From homepage" + name);
         welcomeText.setText(String.format("Hello %s", name));
-        if (name == null) {
-            welcomeText.setText(String.format("Hello %s", userName));
-        }
         //button image to show the user's shopping cart
         searchView = (SearchView) findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
