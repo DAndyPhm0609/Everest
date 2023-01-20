@@ -30,7 +30,7 @@ public class HomePage extends AppCompatActivity {
 
     public static ArrayList<Book> recyclerList = new ArrayList<>();
     public static List<Book> cartList = new ArrayList<>();
-    public ArrayList<Book> BookArrayList = new ArrayList<>();
+    public static ArrayList<Book> BookArrayList = new ArrayList<>();
     RecyclerView recyclerBook, listBook;
     private static final String TAG = "HomePage";
     public TextView welcomeText;
