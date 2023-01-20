@@ -11,13 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cartList"
-            android:layout_width="match_parent"
-            android:layout_height="663dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="69dp"
@@ -25,24 +18,25 @@
 
             <CheckBox
                 android:id="@+id/selectAll"
-                android:layout_width="139dp"
+                android:layout_width="124dp"
                 android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
                 android:layout_weight="1"
-                android:text="Select All"
+                android:text="Deselect All"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/total"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:text="Total: "
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/amount"
-                android:layout_width="35dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="$0"
@@ -50,12 +44,20 @@
 
             <Button
                 android:id="@+id/checkout"
-                android:layout_width="wrap_content"
+                android:layout_width="98dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:text="Check Out" />
         </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
